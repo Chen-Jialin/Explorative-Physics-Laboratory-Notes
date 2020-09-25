@@ -58,16 +58,16 @@
     \fancyhead[L]{#2} % 页眉左 Left of the header
     \fancyhead[C]{#5} % 页眉中 Center of the header
     \fancyhead[R]{#7} % 页眉右 Right of the header
-    \setlength\headheight{14pt} % 页眉高 Height of the header
+    \setlength\headheight{26pt} % 页眉高 Height of the header
     \fancypagestyle{FirstPage} % 首页页眉 First-page header
     {
         \fancyhf{} % 清除预设的页眉和页脚 Clear default header and footer
         \fancyhead[L]{#2\\
             #3\\
             #4} % 页眉左 Left of the header
-        \fancyhead[C]{{\Huge\bfseries#5}\\
+        \fancyhead[C]{{\Large\bfseries#5}\\
             #6} % 页眉中 Center of the header
-        \setlength\headheight{38pt} % 页眉高 Height of the header
+        \setlength\headheight{44pt} % 页眉高 Height of the header
         \IfBooleanTF{#1}
         { % Star note (*) - English-style first-page header
             \fancyhead[R]{Name : \makebox[\maxof{\widthof{#7}}{\widthof{#8}}][s]{#7}\\

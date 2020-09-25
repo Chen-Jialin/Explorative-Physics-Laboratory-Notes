@@ -1,0 +1,206 @@
+\documentclass{assignment}
+\ProjectInfos{研究型物理实验}{PHYS1703}{2020-2021学年第一学期}{Note-2-由四维矢量的洛伦兹变换\\推导多普勒效应}{2020. 9. 23（周三）}{陈稼霖}{45875852}
+\begin{document}
+\section*{要求}
+由四维矢量$(\omega,k)$的洛伦兹变换推导多普勒效应.
+
+\section{洛伦兹变换的引入}
+从低速力学现象上归纳出来的旧时空观认为，惯性系$\Sigma$与相对于$\Sigma$以速率$v$沿$x$轴运动的惯性系$\Sigma'$中的位置坐标和时间遵循伽利略变换
+\begin{align}
+    x'=&x-vt,\\
+    y'=&y,\\
+    z'=&z,\\
+    t'=&t.
+\end{align}
+
+理论上和实验上的矛盾使人们重新思考洛伦兹变换：
+\begin{itemize}
+    \item 理论上，由麦克斯韦方程组推导波动方程，最终解得平面波解，其中真空中光速为一常数. 在这里，没有给定一个特定的参考系，就有了为常数的光速.
+    \item 起初认为这一光速是相对于某个特定参考系（例如，以太）而言的，则相对于这一参考系转动的地球上应能观测到这一差异，然而该假设被迈克尔逊-莫雷实验真伪.
+\end{itemize}
+
+因此，爱因斯坦提出狭义相对论的两条基本假设
+\begin{itemize}
+    \item[(1)] \textbf{相对性原理}：所有惯性参考系都是等价的. 物理规律对于所有惯性参考系都可表为相同形式. 即，无论通过力学现象，还是电磁现象，或其他现象，都无法察觉处所处参考系的任何“绝对运动”；
+    \item[(2)] \textbf{光速不变原理}：真空中的光速相对于任何惯性系沿任一方向恒为$c$，并与光源运动无关.
+\end{itemize}
+
+根据这两条基本假设，从一个简单的例子，我们就可以推出洛伦兹变换. 考虑惯性系$\Sigma$及相对于$\Sigma$运动的另一惯性系$\Sigma'$，不失一般性，设$\Sigma'$相对于$\Sigma$运动的速度大小为$v$而方向沿$x$轴. 用$(\bm{x},t)=(x,y,z,t)$表示在惯性系$\Sigma$中发生的某一事件的空时坐标，用$(\bm{x}',t)=(x',y',z',t')$表示该事件在惯性系$\Sigma'$中对应的空时坐标.
+
+假设有一物体相对于惯性系$\Sigma$做匀速运动，其运动方程应由$\bm{x}$与$t$的线性关系所描述，根据上述的狭义相对论的第一条基本假设——相对性原理，在惯性系$\Sigma'$上所观察到的该物体也应做匀速运动，从而其在惯性系$\Sigma'$中的运动方程应由$\bm{x}'$与$t'$中的线性关系描述，由此可知，从$(\bm{x},t)$到$(\bm{x}',t')$的变换必须为线性的，即，$x',y',z',t'$必须可表为$x,y,z,t$的线性组合.
+
+假设在$t=0$时刻，两惯性系原点重合，且此时一个位于惯性系$\Sigma$原点的光源发光，对于光从光源发出这一事件（事件A），其在惯性系$\Sigma$和$\Sigma'$中的空时坐标均为$(0,0,0,0)$，对于某探测器接受到该光信号这一事件（事件B），设其在惯性系$\Sigma$和$\Sigma'$中的空时坐标分别为$(x,y,z,t)$和$(x',y',z',t')$. 根据上述的狭义相对论的第二条基本假设——光速不变性，有
+\begin{align}
+    x^2+y^2+z^2=&c^2t^2,\\
+    x'^2+y'^2+z'^2=&c^2t'^2.
+\end{align}
+设
+\begin{align}
+    F_1(x,y,z,t)=&x^2+y^2+z^2-c^2t^2,\\
+    F_2(x',y',z',t')=&x'^2+y'^2+z'^2-c^2t'^2.
+\end{align}
+因为$(x',y',z',t')$可表为$(x,y,z,t)$的线性组合，故$F_2$可进一步表为$(x,y,z,t)$的函数，$F_2(x,y,z,t)$.
+
+我们可以任意摆放探测器，也就是说，我们可以任意调整$(x,y,z,t)$，但是无论怎么调整，只要事件A和事件B是以光来连接的，就恒有，$F_1(x,y,z,t)=0$，且$F_2(x,y,z,t)=0$. 当然两个事件也可以有除光以外的其他的连接方式（例如把事件A改成声波从声源发出，把事件B改成探测器探测到声波，例如把事件A改成飞船从基地出发，把事件B改成飞船到达目的地），此时则有$F_1(x,y,z,t)<0$，$F_2(x,y,z,t)<0$. 综合起来，有：\uline{$F_1(x,y,z,t)\leq 0$，\\$F_2(x,y,z,t)\leq 0$，且若$F_1(x,y,z,t)=0$（即，若两事件以光连接），则必有$F_2(x,y,z,t)=0$}.
+
+由于$(x',y',z',t')$可表为$(x,y,z,t)$的线性组合，而又有以上划线的这条结论，所以$F_1(x,y,z,t)$和$F_2(x,y,z,t)$之间只相差一因子，即
+\begin{align}
+    x'^2+y'^2+z'^2-c^2t'^2=A(x^2+y^2+z^2-c^2t^2).
+\end{align}
+又因为$\Sigma$和$\Sigma'$这两个惯性系是等价的，反过来亦有关系
+\begin{align}
+    x^2+y^2+z^2-c^2t^2=A(x'^2+y'^2+z'^2-c^2t'^2).
+\end{align}
+从而有间隔不变性
+\begin{align}
+    \label{gap-const}
+    x'^2+y'^2+z'^2-c^2t'^2=x^2+y^2+z^2-c^2t^2.
+\end{align}
+
+由于$\Sigma'$相对于$\Sigma$运动的速度沿$x$轴，故$y,z$在变换中不变，变换具有如下形式
+\begin{align}
+    \label{transform-1}x'=&a_{11}x+a_{12}ct,\\
+    y'=&y,\\
+    z'=&z,\\
+    \label{transform-4}ct'=&a_{21}x+a_{22}ct.
+\end{align}
+由于$x$和$x'$的正向相同，故应取$a_{11}>0$；由于$t$和$t'$的正向相同，应取$a_{22}>0$，将变换的形式（式\eqref{transform-1}至式\eqref{transform-4}）代入间隔不变性（式\eqref{gap-const}）中得
+\begin{align}
+    (a_{11}x+a_{21}ct)^2+y^2+z^2-(a_{21}x+a_{22}ct)^2=x^2+y^2+z^2-c^2t^2.
+\end{align}
+展开后比较系数得
+\begin{align}
+    \label{1}a_{11}^2-a_{21}^2=&1,\\
+    \label{2}a_{11}a_{12}-a_{21}a_{22}=&0,\\
+    \label{3}a_{12}^2-a_{22}^2=&-1.
+\end{align}
+由式\eqref{1}和\eqref{3}得
+\begin{align}
+    \label{4}a_{11}=&\sqrt{1+a_{21}^2},\\
+    \label{5}a_{22}=&\sqrt{1+a_{12}^2}.
+\end{align}
+在代入式\eqref{2}中得
+\begin{align}
+    \label{6}a_{12}=a_{21}.
+\end{align}
+这些系数与两个惯性系之间的相对运动速度有关，因而可以用$v$表出. 在$\Sigma$上观察，$\Sigma'$的原点$O'$以速率$v$沿$x$轴运动，其坐标为
+\begin{align}
+    x=vt.
+\end{align}
+而$O'$在$\Sigma'$上的坐标恒为$x'=0$，将其代入式\eqref{transform-1}中可得
+\begin{align}
+    \frac{a_{12}}{a_{11}}=-\frac{v}{c}.
+\end{align}
+从而由式\eqref{4}\eqref{5}\eqref{6}解得
+\begin{align}
+    a_{11}=&a_{22}=\frac{1}{\sqrt{1-\frac{v^2}{c^2}}}.\\
+    _{12}=&a_{21}=\frac{-\frac{v}{c}}{\sqrt{1-\frac{v^2}{c^2}}}.
+\end{align}
+至此，我们得到了洛伦兹变换
+\begin{align}
+    x'=&\frac{x-vt}{\sqrt{1-\frac{v^2}{c^2}}},\\
+    y'=&y,\\
+    z'=&z,\\
+    t'=&\frac{t-\frac{v}{c^2}x}{\sqrt{1-\frac{v^2}{c^2}}}.
+\end{align}
+
+\section{四维矢量的引入}
+将上面的四个洛伦兹变换式写成线性代数形式：
+\begin{align}
+    \left(\begin{matrix}
+        x'\\
+        y'\\
+        z'\\
+        ict'\\
+    \end{matrix}\right)=A\left(\begin{matrix}
+        x\\
+        y\\
+        z\\
+        ict
+    \end{matrix}\right),
+\end{align}
+其中变换矩阵
+\begin{align}
+    A=\left(\begin{matrix}
+        \gamma&0&0&i\beta\gamma\\
+        0&1&0&0\\
+        0&0&1&0\\
+        -i\beta\gamma&0&0&\gamma
+    \end{matrix}\right),
+\end{align}
+其中
+\begin{align}
+    \beta=&\frac{v}{c},\\
+    \gamma=&\frac{1}{\sqrt{1-\frac{v^2}{c^2}}}.
+\end{align}
+可以验证，$A$是一个正交矩阵：
+\begin{align}
+    AA^T=I,
+\end{align}
+也就是说乘上这样一个矩阵相当于使矢量在四维空间中转动. 根据正交矩阵的性质，变换前后的两个矢量$(\bm{x},ict)$和\\$(\bm{x},ict')$模长不变.
+
+\section{用四维矢量推导多普勒效应}
+
+在惯性系$\Sigma$中，电磁波的相位为
+\begin{align}
+    \phi=\bm{k}\cdot\bm{x}-\omega t.
+\end{align}
+在惯性系$\Sigma'$中，电磁波的相位为
+\begin{align}
+    \phi'=\bm{k}'\cdot\bm{x}'-\omega't'.
+\end{align}
+假设在$t=0$时刻两个惯性系中观察到相位均为$0$，$\phi=\phi'=0$（事件A），事件A在两个惯性系中的空时坐标均为$(0,0,0,0)$，在惯性系$\Sigma$中经过电磁波的$n$个周期后，第$n$个波峰经过$\Sigma$原点，相位为$\phi=-2\pi n$（事件B），事件B在惯性系$\Sigma'$中的空时坐标为$(\bm{x}=0,t=2\pi n/\omega)$，通过洛伦兹变换可得事件$B$在惯性系$\Sigma'$中的空时坐标$(\bm{x}',t')=A(\bm{x},t)$，而相位仍为$\phi'=-2\pi n$，这是因为某个波峰经过原点是一个物理事件，而相位对应了经过原点的波峰的数目，不应随参考系的变换而发生改变：
+\begin{align}
+    \bm{k}\cdot\bm{x}-\omega t=\bm{k}'\cdot\bm{x}'-\omega't'
+\end{align}
+要满足上面这一点，波矢和频率的洛伦兹变换就需满足
+\begin{align}
+    \left(\begin{matrix}
+        k_x'\\
+        k_y'\\
+        k_z'\\
+        i\omega'/c
+    \end{matrix}\right)=A^{-1}\left(\begin{matrix}
+        k_x\\
+        k_y\\
+        k_z\\
+        i\omega/c
+    \end{matrix}\right)=A^T\left(\begin{matrix}
+        k_x\\
+        k_y\\
+        k_z\\
+        i\omega/c
+    \end{matrix}\right).
+\end{align}
+从而有多普勒效应：
+\begin{align}
+    \omega'=\gamma(\omega-vk_1)=\gamma\left(\omega-v\frac{\omega}{c}\cos\theta\right)=\gamma\omega\left(1-\frac{v}{c}\cos\theta\right),
+\end{align}
+其中$\theta$为$\bm{k}$与$x$轴方向的夹角.
+
+\section{讨论}
+沿着激光传输方向运动的粒子的多普勒效应为
+\begin{align}
+    \omega'_{\parallel}=\gamma\omega\left(1-\frac{v}{c}\right)=\frac{\omega\left(1-\frac{v}{c}\right)}{\sqrt{1-\frac{v^2}{c^2}}}.
+\end{align}
+垂直于激光传输方向运动的粒子的多普勒效应为
+\begin{align}
+    \omega'_{\perp}=\gamma\omega=\frac{\omega}{\sqrt{1-\frac{v^2}{c^2}}}.
+\end{align}
+对于本实验中的气体粒子，其运动速率$v$远低于光速$c$，故
+\begin{align}
+    \omega'_{\perp}\approx\omega\left(1+\frac{1}{2}\frac{v^2}{c^2}\right)
+\end{align}
+与入射激光原始频率$\omega$的差距远远小于
+\begin{align}
+    \omega'_{\parallel}\approx\omega\left(1-\frac{v}{c}\right)
+\end{align}
+与入射激光原始频率$\omega$的差距，故总体上只需考虑沿着激光传输方向的速度造成的多普勒效应：
+\begin{align}
+    \omega'=\omega\left(1-\frac{v}{c}\right).
+\end{align}
+
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{Note-2}
+\end{document}
