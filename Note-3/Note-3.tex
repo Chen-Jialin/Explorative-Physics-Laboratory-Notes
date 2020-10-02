@@ -9,8 +9,10 @@
 \end{itemize}
 
 \section{气体折射率实部与虚部关系推导}
-\subsection{经典方法}
-将原子中的电子等效为由核束缚的谐振子，推导其在
+本节中使用经典力学和量子力学的两种方法推导气体折射率实部与虚部之间的关系.
+
+\subsection{经典力学方法}
+本小节中将原子中的电子等效为由核束缚的谐振子，推导其在交变电场中的电极化强度响应，从而得到含有大量这种原子的气体折射率的实部与虚部之间的关系.
 
 无外场作用的情况下，原子中电子绕原子核运动，其平均位置$\bm{x}$与原子核位置（设为原点）重合，即$\bm{x}=0$；在弱场下，可近似认为电子平均位置的偏离正比场强，故可将电子等效为受原子核束缚的一个谐振子，其位移为电子平均位置相对于原子核的偏离$\bm{x}$，其本征振动频率$\omega_0$为电子在能级间跃迁的频率，其阻尼系数设为$\gamma$（在经典图像中无法得到阻尼系数的具体数值，只能通过实验得到经验值）. 在一维情况下，该谐振子在电场$E(x,t)$中的动力学方程为
 \begin{align}
@@ -81,23 +83,359 @@
 \end{align}
 当电磁场振荡频率与谐振子的本征频率相近（如本实验中入射激光的频率在铷原子共振频率附近扫描），$\omega\approx\omega_0$且$\omega-\omega_0\ll\gamma$，上面两式还可进一步近似为
 \begin{align}
-    n_0=&1-\frac{2\pi Nfe^2}{m}\frac{\frac{(\omega+\omega_0)(\omega-\omega_0)}{\omega_0(\omega+\omega_0)}}{\frac{(\omega+\omega_0)^2(\omega-\omega_0)^2+\omega^2\gamma^2}{\omega_0(\omega+\omega_0)}}\approx 1-\frac{2\pi Nfe^2}{m}\frac{(\omega-\omega_0)/\omega_0}{2(\omega-\omega_0)^2+\frac{1}{2}\gamma^2}=\frac{\pi Nfe^2}{m}\frac{\Delta\omega/\omega_0}{\Delta\omega^2+\gamma^2/4}.
+    n_0=&1-\frac{2\pi Nfe^2}{m}\frac{\frac{(\omega+\omega_0)(\omega-\omega_0)}{\omega_0(\omega+\omega_0)}}{\frac{(\omega+\omega_0)^2(\omega-\omega_0)^2+\omega^2\gamma^2}{\omega_0(\omega+\omega_0)}}\approx 1-\frac{2\pi Nfe^2}{m}\frac{(\omega-\omega_0)/\omega_0}{2(\omega-\omega_0)^2+\frac{1}{2}\gamma^2}=\frac{\pi Nfe^2}{m}\frac{\Delta\omega/\omega_0}{\Delta\omega^2+\gamma^2/4},
 \end{align}
 和
 \begin{align}
     n_0\kappa=\frac{2\pi Nfe^2}{m}\frac{\frac{\omega\gamma}{\omega_0(\omega+\omega_0)}}{\frac{(\omega+\omega_0)^2(\omega-\omega_0)^2+\omega^2\gamma^2}{\omega_0(\omega+\omega_0)}}\approx\frac{2\pi Nfe^2}{m}\frac{\frac{1}{2}\gamma/\omega_0}{2(\omega-\omega_0)^2+\frac{1}{2}\gamma^2}=\frac{\pi Nfe^2}{m}\frac{\gamma/2\omega_0}{\Delta\omega^2+\gamma^4/2}.
 \end{align}
 
-（TODO：为什么忽略电磁波中磁场造成的洛伦兹力的效果？需要估算和比较一下电场力和洛伦兹力的量级？）
+理论上说，电磁波的磁场也应对振子产生作用（洛伦兹力），而在上面的推导中，我们却忽略了这一项，这是因为电子在电磁波中受到洛伦兹力的量级远小于电场力的量级. 我们可以通过简单的估算说明这一点. 假设电磁波中的电场强度最大值为$1$V/m，则电子受到电场力大小为
+\begin{align}
+    F_{\text{electric}}=eE=1.6\times 10^{-19}\text{C}\times 1\text{V/m}=1.6\times 10^{-19}\text{N}.
+\end{align}
+磁感应强度$\bm{B}$与电场$\bm{E}$具有如下关系
+\begin{align}
+    \bm{B}=\frac{\bm{k}}{\omega}\times\bm{E}.
+\end{align}
+其中$\bm{k}$为电磁波的波矢，$\omega$为电磁波的角频率.
+在真空中，
+\begin{align}
+    B=\frac{E}{c}=\frac{1\text{V/m}}{3\times 10^8\text{m/s}}=\frac{1}{3}\times 10^{-8}\text{T}.
+\end{align}
+我们用玻尔模型估算原子中电子的运动速度. 玻尔模型中，氢原子的电子和原子核之间的库仑力提供向心力使电子绕原子核旋转：
+\begin{align}
+    m\frac{v^2}{r}=\frac{1}{4\pi\epsilon_0}\frac{e^2}{r^2}.
+\end{align}
+其中$v$为电子的线速率，$r$为电子轨道半径，$\epsilon_0$为真空中介电常数.
 
-\subsection{量子方法}
-TODO：利用刘维尔-冯·诺依曼方程求解二能级系统得气体折射率实部与虚部关系
+或者也可以估算振子的位移速度作为电子的运动速度
+
+\subsection{量子力学方法}
+本小节引入刘维尔-冯·诺依曼方程，并通过求解二能级系统在交变电场中的电极化强度响应，得气体折射率实部与虚部关系.
+
+\subsubsection{密度矩阵的引入}
+初等量子力学中处理的状态绝大多数为纯态，表示纯态一般有两种方法：一种是用波函数，另一种是用狄拉克符号（左矢、右矢）. 然而对于一个存在多个系综的系统（如本实验的铷蒸汽，其中的铷原子以玻尔兹曼分布律处于各个不同的状态），其状态为统计叠加态，无法用单一的波函数或狄拉克符号表示. 为了对纯态和统计混合态有一个统一的表示方法，就需要引入密度矩阵.
+
+首先解释什么是纯态和统计混合态：
+\begin{itemize}
+    \item 所谓纯态，就是可以用单个波函数或狄拉克符号表示的状态. 例如，对于一个电子，以自旋沿$z$轴方向向上的状态$\lvert\uparrow\rangle$和自旋沿$z$轴方向向下的状态$\lvert\downarrow\rangle$为基，其状态总可表为$\lvert\phi\rangle=\alpha\lvert\uparrow\rangle+\beta\lvert\downarrow\rangle$，其中$\alpha^2+\beta^2=1$，这就是纯态.
+    \item 而统计叠加态，指的是描述的对象以经典概率处于不同的状态，从而无法用单个波函数或狄拉克符号表示的情况. 例如，一个盒子中装有$10000$个电子，其中$5000$个电子处于$\lvert\uparrow\rangle$状态，另外$5000$个电子处于$\lvert\downarrow\rangle$状态，现在我们从这个盒子中随机抽出一个电子，这个电子的状态已经是确定的，要么是$\lvert\uparrow\rangle$，要么是$\lvert\downarrow\rangle$，只不过我们不知道它到底处于$\lvert\uparrow\rangle$和$\lvert\downarrow\rangle$这两个状态中的哪一个，那此时我们如何描述这个电子的状态呢？我们只能说，这个电子有$50\%$的概率处于$\lvert\uparrow\rangle$状态，有$50\%$的概率处于$\lvert\downarrow\rangle$状态，却无法用单个波函数或狄拉克符号表示这个电子的状态，这就是统计混合态. 造成统计混合态的这种不确定性的并不（完全）是量子概率，而是经典概率.
+\end{itemize}
+
+或许你会争辩，如果我们沿$z$轴方向测量\{有$50\%$的概率处于$\lvert\uparrow\rangle$状态，有$50\%$的概率处于$\lvert\downarrow\rangle$状态\}的统计混合态的电子的自旋角动量，那么测量结果将有$50\%$的概率为$\frac{\hbar}{2}$，有$50\%$的概率为$-\frac{\hbar}{2}$. 而如果我们同样沿$z$轴方向测量处于纯态$\frac{1}{\sqrt{2}}(\lvert\uparrow\rangle+\lvert\downarrow\rangle)$的电子的自旋角动量，那么测量结果同样将有$50\%$的概率为$\frac{\hbar}{2}$，有$50\%$的概率为$\frac{\hbar}{2}$. 从测量结果来看，两种情况似乎并没有差异，为什么我们不能也用$\frac{1}{\sqrt{2}}(\lvert\uparrow\rangle+\lvert\downarrow\rangle)$表示前一种情况的电子的状态？这是因为，对处于统计混合态的电子的测量结果并不是在所有情况下都与对处于纯态的电子的测量结果相同的. 上述的沿$z$轴方向测量自旋角动量只是个特例，因为我们选择的基$\{\lvert\uparrow\rangle,\lvert\downarrow\rangle\}$恰好是沿$z$轴方向自旋角动量算符$\hat{\sigma}_z$的本征态，因此对上述两种情况的电子的测量结果相同. 如果我们沿着$x$轴测量电子的自旋角动量，那么对于上述的处于统计混合态的电子，测量结果将会有$50\%$的概率为$\frac{\hbar}{2}$，有$50\%$的概率为$-\frac{\hbar}{2}$，而对于上述的处于纯态的电子，测量结果将$100\%$为$\frac{\hbar}{2}$. 由于统计混合态的测量结果并不能总是与某个纯态相同，因此我们无法用某个表示纯态的波函数或狄拉克来表示统计混合态.
+
+当我们测量一个处于纯态$\lvert\phi\rangle$的粒子的物理量$\hat{O}$，测量结果的期望值为
+\begin{align}
+    \langle\hat{O}\rangle=\langle\phi\rvert\hat{O}\lvert\phi\rangle.
+\end{align}
+假设一组基为$\{\lvert 1\rangle,\lvert 2\rangle,\cdots,\}$，利用基的完备性，向上式插入一单位算符$\hat{1}=\sum_n\lvert\psi_1\rangle\langle\rvert$，有
+\begin{align}
+    \label{mixture-state-expectation}
+    \notag\langle\hat{O}\rangle=&\langle\phi\rvert\hat{O}\hat{1}\lvert\phi\rangle\\
+    \notag=&\langle\phi\rvert\hat{O}\left[\sum_m\lvert m\rangle\langle m\rvert\right]\lvert\phi\rangle\\
+    \notag=&\sum_m\langle m\vert\phi\rangle\langle\phi\rvert\hat{O}\lvert m\rangle\\
+    =&\tr[\lvert\phi\rangle\langle\phi\rvert\hat{O}].
+\end{align}
+当我们测量一个处于\{有$P_1$的概率处于$\lvert\phi_1\rangle$状态，有$P_2$的概率处于$\lvert\phi_2\rangle$状态，……\}的统计叠加态的粒子的物理量$\hat{O}$，测量结果的期望值为
+\begin{align}
+    \langle\hat{O}\rangle=\sum_nP_n\langle\phi_n\rvert\hat{O}\lvert\phi_n\rangle.
+\end{align}
+同理插入一个单位算符，整理可得
+\begin{align}
+    \label{pure-state-expectation}
+    \langle\hat{O}\rangle=\tr\left[\sum_nP_n\lvert\phi_n\rangle\langle\phi_n\rvert\hat{O}\right].
+\end{align}
+
+观察式\eqref{pure-state-expectation}和\eqref{mixture-state-expectation}，我们这样定义密度矩阵：
+\begin{itemize}
+    \item 对于一个\{有$P_1$的概率处于$\lvert\phi_1\rangle$状态，有$P_2$的概率处于$\lvert\phi_2\rangle$状态，……\}的统计叠加态，其密度矩阵表为
+    \begin{align}
+        \hat{\rho}=\sum_nP_n\lvert\phi_n\rangle\langle\phi_n\rvert.
+    \end{align}
+    \item 对于一个纯态$\lvert\phi\rangle$，可视其为\{有$100\%$的概率处于$\lvert\phi\rangle$状态\}的统计叠加态，从而其密度矩阵表为
+    \begin{align}
+        \hat{\rho}=\lvert\phi\rangle\langle\phi\rvert.
+    \end{align}
+\end{itemize}
+这样一来，无论是对于纯态还是统计混合态，对物理量$\hat{O}$的测量结果的期望值都可表为
+\begin{align}
+    \langle\hat{O}\rangle=\tr[\hat{\rho}\hat{O}]=\tr[\hat{O}\hat{\rho}],
+\end{align}
+从而对于纯态和统计混合态的各种操作就可以被统一起来.
+
+\subsubsection{刘维尔-冯·诺依曼方程的引入和求解}
+对于纯态，我们不难用薛定谔方程来描述和求解其关于时间的演化. 而为了求解密度矩阵关于时间的演化，就要引入刘维尔-冯·诺依曼方程（liouville - von neumann equation）.
+
+理论上，无论对于纯态还是密度矩阵，从薛定谔方程出发都可以求解其关于时间的演化：
+\begin{itemize}
+    \item 对于纯态，薛定谔方程
+    \begin{align}
+        i\hbar\frac{\partial}{\partial t}\lvert\phi\rangle=\hat{H}\lvert\phi\rangle
+    \end{align}
+    两边关于时间积分可得
+    \begin{align}
+        \lvert\phi(t)\rangle=\exp\left[-\frac{i}{\hbar}\int_{t_0}^t\hat{H}(\tau)\,d\tau\right]\lvert\phi(t_0)\rangle.
+    \end{align}
+    由此定义时间演化算符
+    \begin{align}
+        \hat{U}(t-t_0)=\exp\left[-\frac{i}{\hbar}\int_{t_0}^t\hat{H}(\tau)\,d\tau\right]
+    \end{align}
+    使得纯态关于时间的演化可表为
+    \begin{align}
+        \label{pure-state-evolution}
+        \boxed{\lvert\phi(t)\rangle=\hat{U}(t-t_0)\lvert\phi(t_0)\rangle.}
+    \end{align}
+    易证，对时间演化算符取厄米共轭相当于对其自变量取相反数
+    \begin{align}
+        \hat{U}^{\dagger}(t-t_0)=\hat{U}(-(t_0-t)),
+    \end{align}
+    且时间演化算符与自变量取相反数之后的时间演化算符之乘积为单位算符
+    \begin{align}
+        \hat{U}_0(t-t_0)\hat{U}(-(t-t_0))=\hat{1}.
+    \end{align}
+    我们将在下面用到时间演化算符的这些性质.
+    \item 对于密度矩阵，我们将式\eqref{pure-state-evolution}，可将其关于时间的演化表为
+    \begin{align}
+        \notag\hat{\rho}(t)=&\sum_nP_n\hat{U}(t-t_0)\lvert\phi_n(t_0)\rangle\left(\hat{U}\lvert\phi_n(t_0)\rangle\right)^{\dagger}\\
+        \notag=&\sum_nP_n\hat{U}(t-t_0)\lvert\phi_n(t_0)
+    \end{align}
+    \begin{align}
+        \label{mixture-state-evolution}
+        \Longrightarrow\boxed{\rho(t)=\hat{U}(t-t_0)\hat{\rho}(t_0)\hat{U}(-(t-t_0)).}
+    \end{align}
+\end{itemize}
+
+然而，在实际求解中，特别是存在微扰而无法将系统状态在由哈密顿量的本征态组成的积上展开时，我们将发现，用式\eqref{pure-state-evolution}尚可求解纯态关于时间的演化，但是用式\eqref{mixture-state-evolution}求解密度矩阵关于时间的演化并不太可行：
+\begin{itemize}
+    \item 当哈密顿算符与时间无关，$\hat{H}(t)=\hat{H}_0$，纯态和密度矩阵关于时间的演化都还可以解析地写出：
+    \begin{itemize}
+        \item 对于纯态$\lvert\phi\rangle$，将其在由哈密顿算符$\hat{H}_0$的本征态组成的基$\{\lvert 1\rangle,\lvert 2\rangle,\cdots\}$上展开：
+        \begin{align}
+            \lvert\phi(t)\rangle=\sum_na_n(t)\lvert n\rangle,
+        \end{align}
+        其中$\sum_n\abs{a_n(t)}^2=1$. 纯态$\lvert\phi(t)\rangle$关于时间的演化可表为
+        \begin{align}
+            \notag\lvert\phi(t)\rangle=&\hat{U}(t-t_0)\lvert\phi(t_0)\rangle\\
+            \notag=&\hat{U}(t-t_0)\sum_na_n(t_0)\lvert n\rangle,\\
+            \notag=&\sum_na_n(t_0)\hat{U}(t-t_0)\lvert n\rangle\\
+            \notag=&\sum_na_n(t_0)\exp\left[-\frac{i}{\hbar}\hat{H}(t-t_0)\right]\lvert n\rangle\\
+            \notag=&\sum_na_n(t_0)\sum_{m=0}^{\infty}\frac{\left[-\frac{i}{\hbar}\hat{H}(t-t_0)\right]^m}{m!}\lvert n\rangle\\
+            \notag=&\sum_na_n(t_0)\sum_{m=0}^{\infty}\frac{\left[-\frac{i}{\hbar}E_n(t-t_0)\right]^m}{m!}\lvert n\rangle\\
+            =&\sum_na_n(t_0)\exp\left[-\frac{i}{\hbar}E_n(t-t_0)\right]\lvert n\rangle.
+        \end{align}
+        其中$E_n$为本征态$\lvert n\rangle$对应的本征能量.
+        \item 对于密度算符，也总可以将其在由哈密顿算符的本征态组成的基$\{\lvert 1\rangle,\lvert 2\rangle,\cdots\}$上展开：
+        \begin{align}
+            \label{density-matrix-expansion-on-basis}
+            \notag\hat{\rho}(t)=&\sum_nP_n\lvert\phi_n(t)\rangle\langle\phi_n(t)\rvert\\
+            \notag=&\sum_nP_n\hat{1}\lvert\phi_n(t)\rangle\langle\phi_n(t)\rvert\hat{1}\\
+            \notag=&\sum_nP_n\left[\sum_m\lvert n\rangle\langle n\rvert\right]\lvert\phi_n(t)\rangle\langle\phi_n(t)\rvert\left[\sum_l\lvert l\rangle\langle l\rvert\right]\\
+            \notag=&\sum_m\sum_l\left[\sum_nP_n\langle m\vert\phi(t)\rangle\langle\phi_n(t)\vert l\rangle\right]\lvert m\rangle\langle l\rvert\\
+            =&\sum_m\sum_la_{ml}(t)\lvert m\rangle\langle n\rvert,
+        \end{align}
+        其中
+        \begin{align}
+            a_{ml}(t)=\sum_nP_n\langle m\vert\phi(t)\rangle\langle\phi_n(t)\vert l\rangle.
+        \end{align}
+        将式\eqref{density-matrix-expansion-on-basis}代入式\eqref{mixture-state-evolution}，密度算符关于时间的演化可表为
+        \begin{align}
+            \notag\hat{\rho}(t)=&\sum_m\sum_la_{ml}(t_0)\hat{U}(t-t_0)\lvert m\rangle\langle n\rvert\hat{U}(-(t-t_0))\\
+            \notag=&\sum_m\sum_la_{ml}(t_0)\exp\left[-\frac{i}{\hbar}\hat{H}_0(t-t_0)\right]\lvert m\rangle\langle l\rvert\exp\left[\frac{i}{\hbar}\hat{H}_0(t-t_0)\right]\\
+            \notag=&\sum_m\sum_la_{ml}(t_0)\exp\left[-\frac{i}{\hbar}E_m(t-t_0)\right]\lvert m\rangle\langle l\rvert\exp\left[\frac{i}{\hbar}E_l(t-t_0)\right]\\
+            =&\sum_m\sum_la_{ml}(t_0)\exp\left[-\frac{i}{\hbar}(E_m-E_n)(t-t_0)\right]\lvert m\rangle\langle l\rvert.
+        \end{align}
+    \end{itemize}
+    \item 当存在含时微扰$\hat{H}_I(t)$（外加电磁场对于原子中电子的作用就可归为这一类），总哈密顿量为原有的零微扰哈密顿量与微扰哈密顿量之和：
+    \begin{align}
+        \label{time-dep-Hamiltonian}
+        \hat{H}(t)=\hat{H}_0+\hat{H}_I(t).
+    \end{align}
+    \begin{itemize}
+        \item 对于纯态，使用含时微扰论尚可求解，此处不详述.
+        \item 对于密度矩阵关于时间演化关系的求解，按照微扰理论的一贯做法，我们引入一个无量纲的系数$\lambda$，将总哈密顿量表为
+        \begin{align}
+            \hat{H}=\hat{H}_0+\lambda\hat{H}_I.
+        \end{align}
+        我们将密度矩阵展开为$\lambda$的级数：
+        \begin{align}
+            \label{density-matrix-expansion}
+            \hat{\rho}'(t)=\hat{\rho}^{(0)}(t)+\hat{\rho}^{(1)}(t)+\hat{\rho}^{(2)}(t)+\cdots.
+        \end{align}
+        代入式\eqref{mixture-state-evolution}有
+        \begin{align}
+            \notag&\left[\hat{\rho}^{(0)}(t)+\lambda\hat{\rho}^{(1)}+\lambda^2\hat{\rho}^{(2)}+\cdots\right]\\
+            &\qquad=\exp\left[-\frac{i}{\hbar}\int_{t_0}^{t}(\hat{H}_0+\hat{H}_I(\tau))\,d\tau\right]\left[\hat{\rho}^{(0)}(t)+\lambda\hat{\rho}^{(1)}+\lambda^2\hat{\rho}^{(2)}+\cdots\right]\exp\left[\frac{i}{\hbar}\int_{t_0}^t(\hat{H}_0+\hat{H}_I(\tau))\,d\tau\right]
+        \end{align}
+        我们需要将上式右边的时间演化算符展开为$\hat{H}_I$的级数，与密度算符展开的级数相乘，然后对等式两边同阶级数的系数取等，从而得到一系列的微分方程并逐个求解，最后回代入式\eqref{mixture-state-evolution}并取$\lambda=1$而得到密度矩阵关于时间的演化，但这样的操作不简单.
+    \end{itemize}
+\end{itemize}
+
+因此，为了求解密度矩阵关于时间的演化，我们只好使用另一种方法. 我们知道，密度矩阵关于时间的演化遵循
+\begin{align}
+    \notag\frac{d}{dt}\hat{\rho}(t)=&\frac{d}{dt}\sum_nP_n\lvert\phi_n\rangle\langle\phi_n\rvert\\
+    \notag=&\sum_nP_n\left[\left(\frac{d}{dt}\lvert\phi_n(t)\rangle\right)\langle\phi_n(t)\rvert+\lvert\phi_n(t)\rangle\left(\frac{d}{dt}\langle\phi_n(t)\rvert\right)\right]\\
+    \notag=&\sum_nP_n\left[\left(\frac{d}{dt}\lvert\phi_n(t)\rangle\right)\langle\phi_n(t)\rvert+\lvert\phi(t)\rangle\left(\frac{d}{dt}\lvert\phi_n(t)\rangle\right)^{\dagger}\right].
+\end{align}
+用$-\frac{i}{\hbar}\hat{H}$表示$\frac{d}{dt}$，有
+\begin{align}
+    \notag\frac{d}{dt}\hat{\rho}(t)=&\sum_nP_n\left[-\frac{i}{\hbar}\hat{H}\lvert\phi_n(t)\rangle\langle\phi_n(t)\rvert+\lvert\phi_n(t)\rangle\left(-\frac{i}{\hbar}\hat{H}\langle\phi_n(t)\rvert\right)\right]\\
+    \notag=&\sum_nP_n\left[-\frac{i}{\hbar}\hat{H}\lvert\phi_n(t)\rangle\langle\phi_n(t)\rvert+\frac{i}{\hbar}\lvert\phi_n(t)\rangle\langle\phi_n(t)\rvert\hat{H}\right],
+\end{align}
+\begin{align}
+    \label{Liouville-equ}
+    \Longrightarrow\boxed{\frac{d}{dt}\hat{\rho}=-\frac{i}{\hbar}[\hat{H},\hat{\rho}(t)]},
+\end{align}
+此即\textbf{刘维尔-冯·诺依曼方程}，其中$[\hat{H},\hat{\rho}]$表示$\hat{H}$与$\hat{\rho}$的对易算符，即$[\hat{H},\hat{\rho}]=\hat{H}\hat{\rho}-\hat{\rho}\hat{H}$.
+
+将含时的哈密顿表达式\eqref{time-dep-Hamiltonian}和密度矩阵关于$\lambda$的级数（式\eqref{density-matrix-expansion}）代入刘维尔方程（式\eqref{Liouville-equ}）可得
+\begin{align}
+    \frac{d}{dt}\left[\hat{\rho}^{(0)}(t)+\lambda\hat{\rho}^{(1)}(t)+\lambda^2\hat{\rho}^{(2)}(t)+\cdots\right]=-\frac{i}{\hbar}\left[\hat{H}_0+\lambda\hat{H}_I,\hat{\rho}^{(0)}+\lambda\hat{\rho}^{(1)}(t)+\lambda^2\hat{\rho}^{(2)}(t)+\cdots\right].
+\end{align}
+上式两边同阶级数的系数取等得
+\begin{align}
+    \frac{d}{dt}\hat{\rho}^{(0)}=&-\frac{i}{\hbar}[\hat{H}_0(\tau),\hat{\rho}^{(0)}],\\
+    \frac{d}{dt}\hat{\rho}^{(1)}=&-\frac{i}{\hbar}[\hat{H}_0(\tau),\hat{\rho}^{(1)}]-\frac{i}{\hbar}[\hat{H}_I,\hat{\rho}^{(0)}],\\
+    \notag\cdots&\\
+    \frac{d}{dt}\hat{\rho}^{(n)}=&-\frac{i}{\hbar}[\hat{H}_0(\tau),\hat{\rho}^{(n)}]-\frac{i}{\hbar}[\hat{H}_I,\hat{\rho}^{(n-1)}(t)],
+    \notag\cdots&
+\end{align}
+
+理论上只需从低阶至高阶依次求解这些微分方程，就可以得到密度矩阵各阶分量，将其回代入式\eqref{density-matrix-expansion}，就可以得到密度矩阵随时间演化的关系$\hat{\rho}(t)$，但这仍不够简单. 为了更方便地求解$\hat{\rho}(t)$，我们暂时将上述的刘维尔方程从薛定谔绘景转入相互作用绘景（狄拉克绘景），求解出相互作用绘景中的密度矩阵$\hat{\rho}'(t)$，然后将其转化回薛定谔绘景中的密度矩阵$\hat{\rho}(t)$.
+
+在相互作用绘景中，可观测物理量$O$的算符被表为
+\begin{align}
+    \hat{O}'(t)=\hat{U}_0(-t)\hat{O}(t)\hat{U}_0(t).
+\end{align}
+其中$\hat{O}(t)$为可观测物理量$O$的算符在薛定谔绘景中的形式，$\hat{O}'(t)$为其在相互作用绘景中的形式，$\hat{U}_0(t)$为仅在零微扰哈密顿量作用下的时间演化算符：
+\begin{align}
+    \hat{U}_0=\exp\left[-\frac{i}{\hbar}\int_0^t\hat{H}_0\,d\tau\right].
+\end{align}
+密度矩阵也用相似的方式表为
+\begin{align}
+    \hat{\rho}'(t)=\hat{U}(-t)\hat{\rho}(t)\hat{U}(t).
+\end{align}
+密度矩阵关于时间的演化遵循
+\begin{align}
+    \frac{d}{dt}\hat{\rho}'(t)=&\left[\frac{d}{dt}\hat{U}_0(-t)\right]\hat{\rho}(t)\hat{U}_0(t)+\hat{U}_0(-t)\left[\frac{d}{dt}\hat{\rho}(t)\right]\hat{U}_0(t)+\hat{U}_0(-t)\hat{\rho}(t)\left[\frac{d}{dt}\hat{U}_0(-t)\right].
+\end{align}
+其中
+\begin{align}
+    \frac{d}{dt}\hat{U}_0(t)=\frac{d}{dt}\exp\left[-\frac{i}{\hbar}\hat{H}_0t\right]=-\frac{i}{\hbar}\exp\left[-\frac{i}{\hbar}\hat{H}_0t\right]=-\frac{i}{\hbar}\hat{H}_0\hat{U}_0(t),
+\end{align}
+而
+\begin{align}
+    \frac{d}{dt}\hat{U}_0(-t)=\frac{i}{\hbar}\hat{H}_0\hat{U}_0(-t),
+\end{align}
+以及根据刘维尔方程（式\eqref{Liouville-equ}），故有
+\begin{align}
+    \label{density-matrix-evolution-2}
+    \frac{d}{dt}\hat{\rho}'(t)=\frac{i}{\hbar}\hat{H}_0\hat{U}_0(-t)\hat{\rho}(t)\hat{U}_0(t)-\frac{i}{\hbar}\hat{U}_0(-t)[\hat{H}_0,\hat{\rho}(t)]\hat{U}_0(t)-\frac{i}{\hbar}\hat{U}_0(-t)[\hat{H}_I(t),\hat{\rho}(t)]\hat{U}_0(t)-\frac{i}{\hbar}\hat{U}_0(-t)\hat{\rho}(t)\hat{H}_0\hat{U}_0(t).
+\end{align}
+由于$\hat{U}_0(t)$与$\hat{H}_0$对易：
+\begin{align}
+    \notag[\hat{U}_0(t),\hat{H}_0]=&\hat{U}_0(t)\hat{H}_0-\hat{H}_0\hat{U}_0(t)\\
+    \notag=&\exp\left[-\frac{i}{\hbar}\hat{H}_0t\right]\hat{H}_0-\hat{H}_0\exp\left[-\frac{i}{\hbar}\hat{H}_0t\right]\\
+    \notag=&\sum_n\frac{(-\frac{i}{\hbar}t)\hat{H}_0^n}{n!}\hat{H}_0-\hat{H}_0\sum_n\frac{(-\frac{i}{\hbar}t)\hat{H}_0^n}{n!}\\
+    =&0,
+\end{align}
+故式\eqref{density-matrix-evolution-2}可进一步化为
+\begin{align}
+    \notag\frac{d}{dt}\hat{\rho}'(t)=&\frac{i}{\hbar}\hat{H}_0\hat{U}_0(-t)\hat{\rho}(t)\hat{U}_0(t)-\frac{i}{\hbar}\hat{H}_0\hat{U}_0(-t)\hat{\rho}(t)\hat{U}_0(t)+\frac{i}{\hbar}\hat{U}_0(-t)\hat{\rho}(t)\hat{U}_0(t)\hat{H}_0\\
+    \notag&-\frac{i}{\hbar}\hat{U}_0(-t)[\hat{H}_I(t),\hat{\rho}(t)]\hat{U}_0(t)-\frac{i}{\hbar}\hat{U}_0(-t)\hat{\rho}(t)\hat{U}_0(t)\hat{H}_0\\
+    =&-\frac{i}{\hbar}\hat{U}_0(-t)[\hat{H}_I(t),\hat{\rho}(t)]\hat{U}_0(t).
+\end{align}
+向上式中插入单位算符$\hat{1}=\hat{U}(t)\hat{U}_0(-t)$，有
+\begin{align}
+    \notag\frac{d}{dt}\hat{\rho}'(t)=&-\frac{i}{\hbar}\hat{U}_0(-t)\hat{H}_I(t)\hat{1}\hat{\rho}(t)\hat{U}_0(t)+\frac{i}{\hbar}\hat{U}_0(-t)\hat{\rho}(t)\hat{1}\hat{H}_I(t)\hat{U}_0(t)\\
+    \notag=&-\frac{i}{\hbar}\hat{U}_0(-t)\hat{H}_I(t)\hat{U}_0(t)\hat{U}_0(-t)\hat{\rho}(t)\hat{U}_0(t)+\frac{i}{\hbar}\hat{U}_0(-t)\hat{\rho}_0(t)\hat{U}_0(t)\hat{U}_0(-t)\hat{H}_I(t)\hat{U}_0(t)\\
+    \notag=&-\frac{i}{\hbar}\hat{H}_I'(t)\hat{\rho}'(t)-\frac{i}{\hbar}\hat{\rho}'(t)\hat{H}_I'(t)
+\end{align}
+\begin{align}
+    \label{Liouville-equ-2}
+    \Longrightarrow\boxed{\frac{d}{d}\hat{\rho}'(t)=-\frac{i}{\hbar}[\hat{H}_I'(t),\hat{\rho}'(t)]}.
+\end{align}
+此即\textbf{相互作用绘景下的刘维尔方程}，比薛定谔绘景下的少了$\hat{H}_0$，相对简单一些.
+
+还是引入无量纲常数$\lambda$，将密度矩阵关于$\lambda$的级数（式\eqref{density-matrix-expansion}）代入刘维尔方程（式\eqref{Liouville-equ-2}）可得
+\begin{align}
+    \frac{d}{dt}[\hat{\rho}^{'(0)}+\lambda\hat{\rho}^{'(1)}+\lambda^2\hat{\rho}^{'(2)}(t)+\cdots]=-\frac{i}{\hbar}\left[\lambda\hat{H}_I',\hat{\rho}^{'(0)}+\lambda\hat{\rho}^{'(1)}(t)+\lambda^2\hat{\rho}^{'(2)}(t)+\cdots\right]
+\end{align}
+上式两边同阶级数的系数取等得
+\begin{align}
+    \frac{d}{dt}\hat{\rho}^{'(0)}=&0,\\
+    \frac{d}{dt}\hat{\rho}^{'(1)}=&-\frac{i}{\hbar}[\hat{H}_I',\hat{\rho}^{'(0)}],\\
+    \notag\cdots&\\
+    \frac{d}{dt}\hat{\rho}^{'(n)}=&-\frac{i}{\hbar}[\hat{H}_I',\hat{\rho}^{'(n-1)}],\\
+    \notag\cdots&
+\end{align}
+对上面各式积分得由密度矩阵低阶分量推算出密度矩阵高阶分量的递归式
+\begin{align}
+    \hat{\rho}^{'(0)}(t)=&\hat{\rho}^{'(0)}(0),\\
+    \hat{\rho}^{'(1)}(t)=&-\frac{i}{\hbar}\int_0^t[\hat{H}_I'(\tau),\hat{\rho}^{'(0)}(\tau)]\,d\tau,\\
+    \notag\cdots&\\
+    \hat{\rho}^{'(n)}(t)=&-\frac{i}{\hbar}\int_0^t[\hat{H}_I'(\tau),\hat{\rho}^{'(n-1)}(\tau)]\,d\tau,\\
+    \notag\cdots&
+\end{align}
+综合上面各递归式，有
+\begin{align}
+    \hat{\rho}^{'(0)}(t)=&\hat{\rho}^{'(0)}(0),\\
+    \hat{\rho}^{'(n)}(t)=&\left(-\frac{i}{\hbar}\right)^n\int_0^td\tau_1\int_0^{\tau_1}d\tau_2\cdots\int_0^{\tau_{n-1}}d\tau_{n-1}\,\left[\hat{H}_I'(\tau_1),\left[\hat{H}_I'(\tau_2),\cdots\left[\hat{H}_I'(\tau_n),\hat{\rho}^{'(0)}(\tau_n)\right]\right]\right],\quad\forall n\geq 1.
+\end{align}
+其中
+\begin{align}
+    \hat{\rho}^{'(0)}(t)=\hat{U}_0(-t)\hat{\rho}^{(0)}(t)\hat{U}_0(t)=\hat{U}_0(-t)\hat{U}_0(t)\hat{\rho}^{(0)}(0)\hat{U}_0(-t)\hat{U}_0(t)=\hat{\rho}^{(0)}(0),
+\end{align}
+即密度矩阵的零阶近似在两个绘景中是相同的，故
+\begin{align}
+    \hat{\rho}^{'(n)}(t)=&\left(-\frac{i}{\hbar}\right)^n\int_0^td\tau_1\int_0^{\tau_1}d\tau_2\cdots\int_0^{\tau_{n-1}}d\tau_n\,\left[\hat{H}_I'(\tau_1),\left[\hat{H}_I'(\tau_2),\cdots\left[\hat{H}_I'(\tau_n),\hat{\rho}^{(0)}(0)\right]\right]\right],\quad\forall n\geq 1.
+\end{align}
+将密度矩阵由相互作用绘景转化回薛定谔绘景：
+\begin{align}
+    \hat{\rho}^{(0)}(t)=&\hat{U}(t)\hat{\rho}^{(0)}(0)\hat{U}(-t),\\
+    \notag\hat{\rho}^{(n)}(t)=&\hat{U}_0(t)\hat{\rho}^{'(n)}(t)\hat{U}_0(-t)\\
+    =&\left(-\frac{i}{\hbar}\right)^n\hat{U}_0(t)\int_0^td\tau_1\int_0^{\tau_1}d\tau_2\cdots\int_0^{\tau_{n-1}}d\tau_n\,\left[\hat{H}_I'(\tau_1),\left[\hat{H}_I'(\tau_2),\cdots\left[\hat{H}_I'(\tau_n),\hat{\rho}^{(0)}(0)\right]\right]\right]\hat{U}_0(-t),\quad\forall n\geq 1.
+\end{align}
+上面的式子在实际计算中是真正可行的.
 
 \section{Kramer-Kronig关系}
-TODO...
+上节推导得到的折射率实部与虚部之间的关系实际上是一个更为一般性的规律——Kramer-Kronig关系——的一个例子. 本节介绍Kramer-Kronig关系，并验证折射率实部与虚部之间的关系确实满足Kramer-Kronig关系.
+
+对于一个具有线性响应$h(t)$的系统，输入信号$x(t)$，则输出信号为响应函数与输入信号的卷积
+\begin{align}
+    y(t)=h(t)=\int_{-\infty}^{+\infty}h(\tau)x(t-\tau)\,d\tau.
+\end{align}
+根据卷积定理，输出信号的频谱为输入信号频谱和响应函数频谱的乘积
+\begin{align}
+    Y(f)=\mathscr{F}[y(t)]=\mathscr{F}[h(t)]\mathscr{F}[x(t)]=H(f)X(f).
+\end{align}
+因果律要求，任意时刻的输入不能影响到之前的输出，因此$h(t)=0,\forall t<0$，从而
+\begin{align}
+    H(f)=\int_{-\infty}^{+\infty}h(t)e^{-i2\pi f\tau}\,d\tau=\int_0^{\infty}h(t)e^{i2\pi f\tau}\,d\tau.
+\end{align}
+在现实世界中，一个系统的响应必然是有限大的，故函数$H(f)$在$f$的上半平面解析. 当输入频率过高，则系统来不及响应，故$\lim_{f\rightarrow\pm\infty}h(f)=0$. 输入对输出的影响随着时间衰减，当输出与输入时间间隔足够长，则输入对输出近乎无影响，故$\lim_{t\rightarrow+\infty}=0$，因此$H(f)$在实轴上是解析的. 又因为利用分部积分法
+\begin{align}
+    \notag H(f)=&\int_0^{+\infty}h(\tau)e^{i2\pi f\tau}\,d\tau\\
+    \notag=&\frac{ih(0)}{2\pi f}+\frac{i}{2\pi f}\int_0^{+\infty}e^{i2\pi f\tau}\,d[h(t)]\\
+    \notag=&\frac{ih(0)}{2\pi f}+\frac{i}{2\pi f}\int_0^{+\infty}h^{(1)}(t)e^{i2\pi f\tau}\,dt\\
+    \notag=&\frac{ih(0)}{2\pi f}-\frac{h^{(1)}(0)}{(2\pi f)^2}-\frac{1}{(2\pi f)^2}\int_0^{+\infty}e^{i2\pi f\tau}\,d[h^{(1)}(t)]\\
+    \notag=&\cdots\\
+    \notag=&\frac{ih(0)}{2\pi f}-\frac{h^{(1)}(0)}{(2\pi f)^2}-\frac{ih(0)}{(2\pi f)^3}+\cdots
+\end{align}
+故$H(f)$随着$\abs{f}\rightarrow 0$的速度不慢于$\frac{1}{\abs{f}}$. 对于如图\ref{contour}所示围道上的积分
+\begin{align}
+    I=\oint\frac{H(f)}{f'-f}\,df'
+\end{align}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.5\textwidth]{Contour.png}
+    \caption{（图源：Wikipedia）}
+    \label{contour}
+\end{figure}
+由于围道内无奇点
 
 \section{利用马赫－曾德尔干涉仪测量折射率与吸收率关系}
-马赫－曾德尔（Mach-Zehnder，M-Z）干涉仪
+马赫－曾德尔（Mach-Zehnder，M-Z）干涉仪，TODO……
 
 \section{书本问题求解}
 \begin{prob}
@@ -144,5 +482,15 @@ TODO...
         \tau=&\frac{\tau_0\gamma^2}{\Delta\omega^2+\gamma^2},\\
         \delta=&k(n_0-1)\Delta z=\frac{(n_0-1)\tau}{\kappa}=-\frac{2\Delta\omega\tau}{\gamma}.
     \end{align}
+    \begin{figure}[h]
+        \centering
+        \subfigure[$\tau_0=0.4$]{
+        \includegraphics[width=0.45\textwidth]{Note-3-Problem-2-1.png}}
+        \subfigure[$\tau_0=2$]{
+        \includegraphics[width=0.45\textwidth]{Note-3-Problem-2-2.png}}
+        \subfigure[$\tau_0=20$]{
+        \includegraphics[width=0.45\textwidth]{Note-3-Problem-2-3.png}}
+        \caption{}
+    \end{figure}
 \end{sol}
 \end{document}
