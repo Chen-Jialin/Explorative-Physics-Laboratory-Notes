@@ -28,7 +28,7 @@
 将其代入式\eqref{motion-equ}中，得
 \begin{align}
     \label{motion-equ-2}
-    m[\ddot{x}+\gamma\dot{x}+\omega_0^2x]=-eE_0e^{-i\omega t}.
+    m[\ddot{x}+\gamma\dot{x}+\omega_0^2x]=-eE_0e^{i\omega t}.
 \end{align}
 从物理上看，谐振子应当和外加电场一样具有$\omega$的振荡频率，观察上面的微分方程，也不难猜到，上式的解应当有如下形式：
 \begin{align}
@@ -54,7 +54,7 @@
 \end{align}
 故电极化率为
 \begin{align}
-    \chi=\frac{e^2N}{\epsilon_0m}\frac{1}{(\omega_0^2-\omega^2)-i\gamma\omega}.
+    \chi=\frac{P(t)}{E(t)}=\frac{e^2N}{\epsilon_0m}\frac{1}{(\omega_0^2-\omega^2)-i\gamma\omega}.
 \end{align}
 事实上，若仔细思考，上面得到的电极化率的表达式并非是完全准确的，例如，原子中往往存在不止一个电子，电子的有效电荷、有效质量也不一定是$e$、$m$（所幸的是，表达式的形式是没有错的，只是系数上存在一定偏差，我们将在下一小节尝试用量子力学的方法严谨地推导电极化率），故为了修正电极化率的表达式，我们引入一个经验系数$f$（又称振子强度），从而将电极化率表为
 \begin{align}
@@ -83,7 +83,7 @@
 \end{align}
 当电磁场振荡频率与谐振子的本征频率相近（如本实验中入射激光的频率在铷原子共振频率附近扫描），$\omega\approx\omega_0$且$\omega-\omega_0\ll\gamma$，上面两式还可进一步近似为
 \begin{align}
-    n_0=&1-\frac{2\pi Nfe^2}{m}\frac{\frac{(\omega+\omega_0)(\omega-\omega_0)}{\omega_0(\omega+\omega_0)}}{\frac{(\omega+\omega_0)^2(\omega-\omega_0)^2+\omega^2\gamma^2}{\omega_0(\omega+\omega_0)}}\approx 1-\frac{2\pi Nfe^2}{m}\frac{(\omega-\omega_0)/\omega_0}{2(\omega-\omega_0)^2+\frac{1}{2}\gamma^2}=\frac{\pi Nfe^2}{m}\frac{\Delta\omega/\omega_0}{\Delta\omega^2+\gamma^2/4},
+    n_0=&1-\frac{2\pi Nfe^2}{m}\frac{\frac{(\omega+\omega_0)(\omega-\omega_0)}{\omega_0(\omega+\omega_0)}}{\frac{(\omega+\omega_0)^2(\omega-\omega_0)^2+\omega^2\gamma^2}{\omega_0(\omega+\omega_0)}}\approx 1-\frac{2\pi Nfe^2}{m}\frac{(\omega-\omega_0)/\omega_0}{2(\omega-\omega_0)^2+\frac{1}{2}\gamma^2}=1-\frac{\pi Nfe^2}{m}\frac{\Delta\omega/\omega_0}{\Delta\omega^2+\gamma^2/4},
 \end{align}
 和
 \begin{align}
@@ -202,7 +202,7 @@
     \end{align}
     \begin{align}
         \label{mixture-state-evolution}
-        \Longrightarrow\boxed{\rho(t)=\hat{U}(t-t_0)\hat{\rho}(t_0)\hat{U}(-(t-t_0)).}
+        \Longrightarrow\boxed{\hat{\rho}(t)=\hat{U}(t-t_0)\hat{\rho}(t_0)\hat{U}(-(t-t_0)).}
     \end{align}
 \end{itemize}
 
@@ -240,10 +240,16 @@
         \end{align}
         将式\eqref{density-matrix-expansion-on-basis}代入式\eqref{mixture-state-evolution}，密度算符关于时间的演化可表为
         \begin{align}
+            \label{density-matrix-evolution-without-perturbation}
             \notag\hat{\rho}(t)=&\sum_m\sum_la_{ml}(t_0)\hat{U}(t-t_0)\lvert m\rangle\langle n\rvert\hat{U}(-(t-t_0))\\
             \notag=&\sum_m\sum_la_{ml}(t_0)\exp\left[-\frac{i}{\hbar}\hat{H}_0(t-t_0)\right]\lvert m\rangle\langle l\rvert\exp\left[\frac{i}{\hbar}\hat{H}_0(t-t_0)\right]\\
             \notag=&\sum_m\sum_la_{ml}(t_0)\exp\left[-\frac{i}{\hbar}E_m(t-t_0)\right]\lvert m\rangle\langle l\rvert\exp\left[\frac{i}{\hbar}E_l(t-t_0)\right]\\
-            =&\sum_m\sum_la_{ml}(t_0)\exp\left[-\frac{i}{\hbar}(E_m-E_n)(t-t_0)\right]\lvert m\rangle\langle l\rvert.
+            \notag=&\sum_m\sum_la_{ml}(t_0)\exp\left[-\frac{i}{\hbar}(E_m-E_l)(t-t_0)\right]\lvert m\rangle\langle l\rvert\\
+            =&\sum_m\sum_la_{ml}(t_0)\exp\left[-i\omega_{ml}(t-t_0)\right]\lvert m\rangle\langle l\rvert,
+        \end{align}
+        其中
+        \begin{align}
+            \omega_{ml}=\frac{E_m-E_l}{\hbar}.
         \end{align}
     \end{itemize}
     \item 当存在含时微扰$\hat{H}_I(t)$（外加电磁场对于原子中电子的作用就可归为这一类），总哈密顿量为原有的零微扰哈密顿量与微扰哈密顿量之和：
@@ -274,12 +280,12 @@
 因此，为了求解密度矩阵关于时间的演化，我们只好使用另一种方法. 我们知道，密度矩阵关于时间的演化遵循
 \begin{align}
     \notag\frac{d}{dt}\hat{\rho}(t)=&\frac{d}{dt}\sum_nP_n\lvert\phi_n\rangle\langle\phi_n\rvert\\
-    \notag=&\sum_nP_n\left[\left(\frac{d}{dt}\lvert\phi_n(t)\rangle\right)\langle\phi_n(t)\rvert+\lvert\phi_n(t)\rangle\left(\frac{d}{dt}\langle\phi_n(t)\rvert\right)\right]\\
+    \notag=&\sum_nP_n\left[\left(\frac{d}{dt}\lvert\phi_n(t)\rangle\right)\langle\phi_n(t)\rvert+\lvert\phi_n(t)\rangle\left(\frac{d}{dt}\langle\phi_n(t)\rvert\right)^{\dagger}\right]\\
     \notag=&\sum_nP_n\left[\left(\frac{d}{dt}\lvert\phi_n(t)\rangle\right)\langle\phi_n(t)\rvert+\lvert\phi(t)\rangle\left(\frac{d}{dt}\lvert\phi_n(t)\rangle\right)^{\dagger}\right].
 \end{align}
 用$-\frac{i}{\hbar}\hat{H}$表示$\frac{d}{dt}$，有
 \begin{align}
-    \notag\frac{d}{dt}\hat{\rho}(t)=&\sum_nP_n\left[-\frac{i}{\hbar}\hat{H}\lvert\phi_n(t)\rangle\langle\phi_n(t)\rvert+\lvert\phi_n(t)\rangle\left(-\frac{i}{\hbar}\hat{H}\langle\phi_n(t)\rvert\right)\right]\\
+    \notag\frac{d}{dt}\hat{\rho}(t)=&\sum_nP_n\left[-\frac{i}{\hbar}\hat{H}\lvert\phi_n(t)\rangle\langle\phi_n(t)\rvert+\lvert\phi_n(t)\rangle\left(-\frac{i}{\hbar}\hat{H}\langle\phi_n(t)\rvert\right)^{\dagger}\right]\\
     \notag=&\sum_nP_n\left[-\frac{i}{\hbar}\hat{H}\lvert\phi_n(t)\rangle\langle\phi_n(t)\rvert+\frac{i}{\hbar}\lvert\phi_n(t)\rangle\langle\phi_n(t)\rvert\hat{H}\right],
 \end{align}
 \begin{align}
@@ -353,7 +359,7 @@
 \end{align}
 \begin{align}
     \label{Liouville-equ-2}
-    \Longrightarrow\boxed{\frac{d}{d}\hat{\rho}'(t)=-\frac{i}{\hbar}[\hat{H}_I'(t),\hat{\rho}'(t)]}.
+    \Longrightarrow\boxed{\frac{d}{dt}\hat{\rho}'(t)=-\frac{i}{\hbar}[\hat{H}_I'(t),\hat{\rho}'(t)]}.
 \end{align}
 此即\textbf{相互作用绘景下的刘维尔方程}，比薛定谔绘景下的少了$\hat{H}_0$，相对简单一些.
 
@@ -393,10 +399,128 @@
 将密度矩阵由相互作用绘景转化回薛定谔绘景：
 \begin{align}
     \hat{\rho}^{(0)}(t)=&\hat{U}(t)\hat{\rho}^{(0)}(0)\hat{U}(-t),\\
-    \notag\hat{\rho}^{(n)}(t)=&\hat{U}_0(t)\hat{\rho}^{'(n)}(t)\hat{U}_0(-t)\\
+    \label{density-matrix-evolution-3}\notag\hat{\rho}^{(n)}(t)=&\hat{U}_0(t)\hat{\rho}^{'(n)}(t)\hat{U}_0(-t)\\
     =&\left(-\frac{i}{\hbar}\right)^n\hat{U}_0(t)\int_0^td\tau_1\int_0^{\tau_1}d\tau_2\cdots\int_0^{\tau_{n-1}}d\tau_n\,\left[\hat{H}_I'(\tau_1),\left[\hat{H}_I'(\tau_2),\cdots\left[\hat{H}_I'(\tau_n),\hat{\rho}^{(0)}(0)\right]\right]\right]\hat{U}_0(-t),\quad\forall n\geq 1.
 \end{align}
 上面的式子在实际计算中是真正可行的.
+
+对于处于非平衡态而无外界微扰的系统来说，系统应当由高能级向低能级自发地弛豫，在足够长的时间后，其统计混合态的绝大多数概率将分配给基态. 在上述的推导中，我们为了简单暂时忽略了这一点. 仔细观察并重新思考式\eqref{density-matrix-evolution-without-perturbation}、式\eqref{Liouville-equ}或式\eqref{Liouville-equ-2}，这些式子说明，当无外界微扰，即$\hat{H}_I'=0$时，密度矩阵的各个矩阵元的除了相位可能周期性变化外，其幅值总是保持不变的，即系统处于各个状态上的概率不变，这显然与真实的世界不符. 为了修正这一点，我们可以在刘维尔方程右边加上弛豫项
+\begin{align}
+    \left[\frac{d}{dt}\hat{\rho}\right]_{ml}=&-\frac{i}{\hbar}[\hat{H}(t),\hat{\rho}(t)]_{ml}-\Gamma_{ml}\hat{\rho}_{ml},\quad m,l\text{不同时}=0,\\
+    \left[\frac{d}{dt}\hat{\rho}\right]_{11}=&-\frac{i}{\hbar}[\hat{H}(t),\hat{\rho}(t)]_{11}-\Gamma_{11}\left(1-\sum_{n\geq 2}\hat{\rho}_{nn}\right),
+\end{align}
+其中下标$_{ml}$表示第$m$行、第$l$列的矩阵元（即对应混合态展开式中$\lvert m\rangle\langle l\rvert$前面的系数），实数$\Gamma_{ml}$为对应矩阵元的弛豫系数，由于（易证）密度矩阵必为一迹为$1$的厄米矩阵，这些弛豫系数必然满足
+\begin{align}
+    \Gamma_{ml}=&\Gamma_{lm},\\
+    \sum_n\Gamma_{nn}=&1.
+\end{align}
+（相互作用绘景中的刘维尔方程同理）\\
+或者为了数学处理上的方便，可以保持原有刘维尔方程的形式不变，而做如下置换
+\begin{align}
+    \omega_{ml}=\frac{E_m-E_l}{\hbar}\longrightarrow\tilde{\Omega}_{ml}=\frac{E_m-E_l}{\hbar}-i\Gamma_{ml}.
+\end{align}
+
+\subsubsection{用刘维尔方程求解气体折射率实部与虚部之间的关系}
+假设原子为一个二能级系统，其要么处于能量为$E_1$的基态$\lvert 1\rangle$，要么处于能量为$E_2$的激发态$\lvert 2\rangle$. 在$t=0$时刻及之前，气体中的原子满足玻尔兹曼分布，其密度矩阵可表为
+\begin{align}
+    \notag\hat{\rho}(t)=&\frac{1}{1+\exp[-(E_2-E_1)/k_BT]}\lvert 1\rangle\langle 1\rvert+\frac{\exp[-(E_2-E_1)/k_B]}{1+\exp[-(E_2-E_1)/k_BT]}\lvert 2\rangle\langle 2\rvert,\\
+    =&\frac{1}{1+\exp(-\hbar\omega_{21}/k_BT)}\lvert 1\rangle\langle 1\rvert+\frac{\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}\lvert 2\rangle\langle 2\rvert,\quad t\leq 0.
+\end{align}
+其中$k_B$为玻尔兹曼常数，$T$为气体温度，
+\begin{align}
+    \omega_{21}=\frac{E_2-E_1}{\hbar}.
+\end{align}
+$t=0$时刻开始入射一电磁波，其电场分量表为
+\begin{align}
+    \bm{E}=\bm{E}_0e^{i\omega t}.
+\end{align}
+根据式\eqref{density-matrix-evolution-3}，求解密度矩阵的一阶近似项随着时间的演化：
+\begin{align}
+    \label{density-matrix-evolution-4}
+    \notag\hat{\rho}^{(1)}(t)=&\left(-\frac{i}{\hbar}\right)\hat{U}_0(t)\int_0^td\tau_1\,[\hat{H}_I'(\tau_1),\hat{\rho}^{(0)}(0)]\hat{U}_0(-t),\\
+    =&\left(-\frac{i}{\hbar}\right)\int_0^td\tau_1\,\hat{U}(t-\tau_1)\left[\hat{H}(\tau_1)\hat{\rho}^{(0)}(0)-\hat{\rho}^{(0)}(0)\hat{H}(\tau_1)\right]\hat{U}(-(t-\tau_1)).
+\end{align}
+非强场条件下，可做偶极近似，微扰哈密顿量仅非对角矩阵元非零
+\begin{align}
+    \notag\hat{H}_I(t)=&-\hat{\bm{p}}\cdot\bm{E}(t)\\
+    \notag=&\hat{1}\left[-\hat{\bm{p}}\cdot\bm{E}(t)\right]\hat{1}\\
+    \notag=&\sum_m\lvert m\rangle\langle m\rvert\left[-\hat{\bm{p}}\cdot\bm{E}(t)\right]\sum_l\lvert l\rangle\langle l\rvert\\
+    \notag=&-\sum_m\sum_l\lvert m\rangle\langle m\rvert\hat{\bm{p}}\lvert l\rangle\cdot\bm{E}\langle l\rvert\\
+    =&-\sum_m\sum_lp_{ml}E(t)\lvert m\rangle\langle l\rvert,
+\end{align}
+其中$\hat{\bm{p}}$为电偶极矩算符，
+\begin{align}
+    p_{ml}=\langle m\rvert\hat{p}\lvert l\rangle=p_{lm}^*.
+\end{align}
+在本小小节所述的二能级场景中，微扰哈密顿量表为
+\begin{align}
+    \hat{H}_I(t)=-p_{12}E_0e^{i\omega t}\lvert 1\rangle\langle 2\rvert-p_{21}E_0e^{i\omega t}\lvert 2\rangle\langle 1\rvert.
+\end{align}
+将上式代入式\eqref{density-matrix-evolution-4}中，得
+\tiny
+\begin{align}
+    \notag\hat{\rho}^{(1)}(t)=&\left(-\frac{i}{\hbar}\right)\int_0^td\tau_1\,\hat{U}_0(t-\tau_1)\left[-p_{12}E_0e^{i\omega\tau_1}\lvert 1\rangle\langle 2\rvert-p_{21}E_0e^{i\omega\tau_1}\lvert 2\rangle\langle 1\rvert\right]\left[\frac{1}{1+\exp(-\hbar\omega_{21}/k_BT)}\lvert 1\rangle\langle 1\rvert+\frac{\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}\lvert 2\rangle\langle 2\rvert\right]\hat{U}_0(-(t-\tau_1))\\
+    \notag&-\left(-\frac{i}{\hbar}\right)\int_0^td\tau_1\,\hat{U}_0(t-\tau_1)\left[\frac{1}{1+\exp(-\hbar\omega_{21}/k_BT)}\lvert 1\rangle\langle 1\rvert+\frac{\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}\lvert 2\rangle\langle 2\rvert\right]\left[-p_{12}E_0e^{i\omega\tau_1}\lvert 1\rangle\langle 2\rvert-p_{21}E_0e^{i\omega\tau_1}\lvert 2\rangle\langle 1\rvert\right]\hat{U}_0(-(t-\tau_1))\\
+    \notag=&\left(-\frac{i}{\hbar}\right)\int_0^td\tau_1\,\hat{U}_0(t-\tau_1)\left[-\frac{\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{12}E_0e^{i\omega\tau_1}\lvert 1\rangle\langle 2\rvert-\frac{1}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{21}E_0e^{i\omega\tau_1}\lvert 2\rangle\langle 1\rvert\right]\hat{U}_0(-(t-\tau_1))\\
+    \notag&-\left(-\frac{i}{\hbar}\right)\int_0^td\tau_1\,\hat{U}_0(t-\tau_1)\left[-\frac{1}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{12}E_0e^{i\omega\tau_1}\lvert 1\rangle\langle 2\rvert-\frac{\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{21}E_0e^{i\omega\tau_1}\lvert 2\rangle\langle 1\rvert\right]\hat{U}_0(-(t-\tau_1))\\
+    \notag=&\left(-\frac{i}{\hbar}\right)\int_0^td\tau_1\,\left[-\frac{\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{12}E_0e^{i\omega\tau_1}e^{-i\tilde{\Omega}_{12}(t-\tau_1)}\lvert 1\rangle\langle 2\rvert-\frac{1}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{21}E_0e^{i\omega\tau_1}e^{-i\tilde{\Omega}_{21}(t-\tau_1)}\lvert 2\rangle\langle 1\rvert\right]\\
+    \notag&-\left(-\frac{i}{\hbar}\right)\int_0^td\tau_1\,\left[-\frac{1}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{12}E_0e^{i\omega\tau_1}e^{-i\tilde{\Omega}_{12}(t-\tau_1)}\lvert 1\rangle\langle 2\rvert-\frac{\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{21}E_0e^{i\omega\tau_1}e^{-i\tilde{\Omega}_{21}(t-\tau_1)}\lvert 2\rangle\langle 1\rvert\right]\\
+    \notag=&-\left(-\frac{i}{\hbar}\right)\frac{\exp(-\hbar\omega_{12}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{12}E_0\frac{\exp(i\omega t)-\exp(-i\tilde{\Omega}_{12}t)}{i(\omega+\tilde{\Omega}_{12})}\lvert 1\rangle\langle 2\rvert-\left(-\frac{i}{\hbar}\right)\frac{1}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{21}E_0\frac{\exp(i\omega t)-\exp(-i\tilde{\Omega}_{21})}{i(\omega+\tilde{\Omega}_{21})}\lvert 2\rangle\langle 1\rvert\\
+    \notag&+\left(-\frac{i}{\hbar}\right)\frac{1}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{12}E_0\frac{\exp(i\omega t)-\exp(-i\tilde{\Omega}_{12}t)}{i(\omega+\tilde{\Omega}_{12})}\lvert 1\rangle\langle 2\rvert+\left(-\frac{i}{\hbar}\right)\frac{\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{21}E_0\frac{\exp(i\omega t)-\exp(i\tilde{\Omega}_{21}t)}{i(\omega+\tilde{\Omega}_{21})}\lvert 2\rangle\langle 1\rvert\\
+    \notag=&\left(-\frac{i}{\hbar}\right)\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{12}E_0\frac{\exp(i\omega t)-\exp(-i\tilde{\Omega}_{12}t)}{i(\omega+\tilde{\Omega}_{12})}\lvert 1\rangle\langle 2\rvert-\left(-\frac{i}{\hbar}\right)\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{21}E_0\frac{\exp(i\omega t)-\exp(-i\tilde{\Omega}_{21}t)}{i(\omega+\tilde{\Omega}_{21})}\lvert 2\rangle\langle 1\rvert\\
+    =&-\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{12}E_0\frac{\exp(i\omega t)-\exp[(i\omega_{21}-\Gamma_{21})t]}{\hbar(\omega-\omega_{21}-i\Gamma_{21})}\lvert 1\rangle\langle 2\rvert+\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{21}E_0\frac{\exp(i\omega t)-\exp[-(i\omega_{2}+\Gamma_{21})t]}{\hbar(\omega+\omega_{21}-i\Gamma_{21})}\lvert 2\rangle\langle 1\rvert.
+\end{align}
+\normalsize
+其中
+\begin{align}
+    \tilde{\Omega}_{21}=&\omega_{21}-i\Gamma_{21}=\frac{E_2-E_1}{\hbar}-i\Gamma_{21},\\
+    i\tilde{\Omega}_{12}=&\left(i\tilde{\Omega}_{21}\right)^*,
+\end{align}
+注意$\Gamma_{21}>0$.
+当外场作用时间足够长，密度算符趋于稳定，其一阶近似项趋于：
+\small
+\begin{align}
+    \lim_{t\rightarrow+\infty}\hat{\rho}^{(1)}(t)=-\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{12}E_0\frac{\exp(i\omega t)}{\hbar(\omega-\omega_{21}-i\Gamma_{21})}\lvert 1\rangle\langle 2\rvert+\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{21}E_0\frac{\exp(i\omega t)}{\hbar(\omega+\omega_{21}-i\Gamma_{21})}\lvert 2\rangle\langle 1\rvert
+\end{align}
+\normalsize
+此时气体的电极化强度大小为（如前所述，考虑的是弱场条件，仅近似到一阶项）
+\small
+\begin{align}
+    \notag\langle\hat{P}\rangle=&\tr\left[N\hat{p}\hat{\rho}\right]=\tr\left[N\hat{p}\left(\hat{\rho}^{(0)}+\hat{\rho}^{(1)}\right)\right]\\
+    \notag=&N\sum_{n=1,2}\langle n\rvert\left[p_{12}\lvert 1\rangle\langle 2\rvert+p_{21}\lvert 2\rangle\langle 1\rvert\right]\left\{\left[\frac{1}{1+\exp(-\hbar\omega_{21}/k_BT)}\lvert 1\rangle\langle 1\rvert+\frac{\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}\lvert 2\rangle\langle 2\rvert\right]\right.\\
+    \notag&\qquad\left.+\left[-\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{12}E_0\frac{\exp(i\omega t)}{\hbar(\omega-\omega_{21}-i\Gamma_{21})}\lvert 1\rangle\langle 2\rvert+\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{21}E_0\frac{\exp(i\omega t)}{\hbar(\omega+\omega_{21}-i\Gamma_{21})}\lvert 2\rangle\langle 1\rvert\right]\right\}\lvert n\rangle\\
+    \notag=&N\left[\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{12}p_{21}E_0\frac{\exp(i\omega t)}{\hbar(\omega+\omega_{21}-i\Gamma_{21})}-\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}p_{21}p_{12}E_0\frac{\exp(i\omega t)}{\hbar(\omega-\omega_{21}-i\Gamma_{21})}\right]\\
+    =&\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}N\abs{p_{12}}^2E_0\exp(i\omega t)\left[\frac{1}{\hbar(\omega+\omega_{21}-i\Gamma_{21})}-\frac{1}{\hbar(\omega-\omega_{21}-i\Gamma_{21})}\right].
+\end{align}
+\normalsize
+当外场的频率接近两个能级之间的跃迁频率（如本实验中入射激光的频率在铷原子共振频率），$\omega\approx\omega_{21}$，上式中括号内第一项的绝对值将远小于第二项的绝对值，从而可近似为
+\begin{align}
+    \notag\langle\hat{P}\rangle\approx&-\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}N\abs{p_{12}}^2E_0\exp(i\omega t)\frac{1}{\hbar(\omega-\omega_{21}-i\Gamma_{21})}\\
+    =&-\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}\frac{N\abs{p_{12}}^2}{\hbar}\frac{(\omega-\omega_{21})+i\Gamma_{21}}{(\omega-\omega_{21})^2+\Gamma_{21}^2}E(t).
+\end{align}
+由此得到气体的电极化率为
+\begin{align}
+    \chi=\frac{P(t)}{E(t)}=-\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}\frac{N\abs{p_{12}}^2}{\hbar}\frac{(\omega-\omega_{21})+i\Gamma_{21}}{(\omega-\omega_{21})^2+\Gamma_{21}^2}.
+\end{align}
+气体的折射率为
+\begin{align}
+    n=\sqrt{1+\chi}\approx 1+\frac{\chi}{2}=1-\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}\frac{N\abs{p_{12}}^2}{2\hbar}\frac{(\omega-\omega_{21})+i\Gamma_{21}}{(\omega-\omega_{21})^2+\Gamma_{21}^2}=n_0(1+i\kappa).
+\end{align}
+上式中约等号成立的条件是弱场，其中折射率实部
+\begin{align}
+    n_0=1-\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}\frac{N\abs{p_{12}}^2}{2\hbar}\frac{\omega}{\Delta\omega^2+\Gamma_{21}^2},
+\end{align}
+折射率虚部（符号或有误，存疑）
+\begin{align}
+    n_0\kappa=-\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}\frac{N\abs{p_{12}}^2}{2\hbar}\frac{i\Gamma_{21}}{\Delta\omega^2+\Gamma_{21}^2}
+\end{align}
+其中$\Delta\omega=\omega-\omega_{21}$.
+
+我们比较一下用经典力学方法和量子力学方法得到的结果，可以发现：
+\begin{itemize}
+    \item 经典图像和量子图像有很奇妙的对应关系：能级间距对应的频率对应着振子的本振频率，能级间的自发弛豫系数$\Gamma$是对应着振子的阻尼系数；
+    \item 量子力学方法相对经典力学方法更接近现象的本质：经典力学方法得到的折射率表达式中存在经验系数$f$，必须通过实验确定，而量子力学方法得到的折射率表达式，只要我们知道能级间距$\hbar\omega_{12}$，气体温度$T$，气体密度$N$，$p_{12}$（理论上可以用数值方法模拟出$\lvert 1\rangle$和$\lvert 2\rangle$的波函数$\phi_1(x)$和$\phi_2(x)$，然后用$p_{12}=\langle 1\rvert\hat{p}\lvert 2\rangle=\int dx\phi_1(x)[-ex]\phi_2^*(x)$求得），就可以计算出折射率.
+\end{itemize}
 
 \section{Kramer-Kronig关系}
 上节推导得到的折射率实部与虚部之间的关系实际上是一个更为一般性的规律——Kramer-Kronig关系——的一个例子. 本节介绍Kramer-Kronig关系，并验证折射率实部与虚部之间的关系确实满足Kramer-Kronig关系.
@@ -433,6 +557,8 @@
     \label{contour}
 \end{figure}
 由于围道内无奇点
+
+注意到无论是经典力学方法还是量子力学方法，为了得到折射率实部和虚部之间的这种关系时，我们都在弱场以及外场频率接近振子本征频率/能级跃迁频率这两个假设的前提下做了近似. 这是因为KK关系适用的对象时线性系统
 
 \section{利用马赫－曾德尔干涉仪测量折射率与吸收率关系}
 马赫－曾德尔（Mach-Zehnder，M-Z）干涉仪，TODO……
