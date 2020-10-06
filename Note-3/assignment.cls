@@ -65,7 +65,7 @@
         \fancyhead[L]{#2\\
             #3\\
             #4} % 页眉左 Left of the header
-        \fancyhead[C]{{\Huge\bfseries#5}\\
+        \fancyhead[C]{{\Large\bfseries#5}\\
             #6} % 页眉中 Center of the header
         \setlength\headheight{38pt} % 页眉高 Height of the header
         \IfBooleanTF{#1}

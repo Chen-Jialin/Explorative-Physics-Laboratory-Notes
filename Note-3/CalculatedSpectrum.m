@@ -8,11 +8,11 @@ for tau0 = [0.4, 2, 20]
     hold on;
     for kDeltaL = (0:5) * pi / 5
         tau = tau0 ./ (Deltaomega_gamma.^2 + 1);
-        delta = - 2 * Deltaomega_gamma .* tau;
+        delta = - Deltaomega_gamma .* tau;
         I_I0 = (1 + exp(-2 * tau) + 2 * exp(-tau) .* cos(kDeltaL + delta)) / 4;
         plot(Deltaomega_gamma, I_I0);
     end
     xlabel('\Delta\omega/\gamma', 'fontsize', 16);
     ylabel('I/I_0', 'fontsize', 16);
-    legend('(k\Delta L) / (\pi / 5) = 0', '1', '2', '3', '4', '5');
+    legend('(k\Delta L) = 0', '(k\Delta L) = \pi/5', '(k\Delta L) = 2\pi/5', '(k\Delta L) = 3\pi/5', '(k\Delta L) = 4\pi/5', '(k\Delta L) = \pi');
 end

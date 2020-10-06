@@ -1,10 +1,10 @@
 \documentclass{assignment}
-\ProjectInfos{研究型物理实验}{PHYS1703}{2020-2021学年第一学期}{Note-3}{2020. 9. 25（周五）}{陈稼霖}{45875852}
+\ProjectInfos{研究型物理实验}{PHYS1703}{2020-2021学年第一学期}{Note-3-气体折射率实部与虚部之间的关系}{2020. 9. 25（周五）}{陈稼霖}{45875852}
 \begin{document}
 \section*{要求}
 \begin{itemize}
     \item[(1)] 了解书本理论；
-    \item[(2)] 了解Kramer-Kronig关系，并推导气体介质折射率实部与虚部（吸收率）之间的关系；
+    \item[(2)] 了解Kramers-Kronig关系，并推导气体介质折射率实部与虚部（吸收率）之间的关系；
     \item[(3)] 完成书本习题I和II.
 \end{itemize}
 
@@ -12,12 +12,12 @@
 本节中使用经典力学和量子力学的两种方法推导气体折射率实部与虚部之间的关系.
 
 \subsection{经典力学方法}
-本小节中将原子中的电子等效为由核束缚的谐振子，推导其在交变电场中的电极化强度响应，从而得到含有大量这种原子的气体折射率的实部与虚部之间的关系.
+本小节中将原子中的电子等效为由核束缚的谐振子，推导其在交变电场中的电极化强度响应，从而得到含有大量这种原子的气体的折射率的实部与虚部之间的关系.
 
-无外场作用的情况下，原子中电子绕原子核运动，其平均位置$\bm{x}$与原子核位置（设为原点）重合，即$\bm{x}=0$；在弱场下，可近似认为电子平均位置的偏离正比场强，故可将电子等效为受原子核束缚的一个谐振子，其位移为电子平均位置相对于原子核的偏离$\bm{x}$，其本征振动频率$\omega_0$为电子在能级间跃迁的频率，其阻尼系数设为$\gamma$（在经典图像中无法得到阻尼系数的具体数值，只能通过实验得到经验值）. 在一维情况下，该谐振子在电场$E(x,t)$中的动力学方程为
+无外场作用的情况下，原子中电子绕原子核运动，其平均位置$\bm{x}$与原子核位置（设为原点）重合，即$\bm{x}=0$；在弱场下，可近似认为电子平均位置的偏离正比场强，故可将电子等效为受原子核束缚的一个谐振子，其位移为电子平均位置相对于原子核的偏离$\bm{x}$，其本征振动频率$\omega_0$为电子在能级间跃迁的频率，其阻尼系数设为$2\gamma$（在经典图像中无法得到阻尼系数的具体数值，只能通过实验得到经验值，这里乘$2$没有任何物理意义，单纯为了后面数学上形式更简单）. 在一维情况下，该谐振子在电场$E(x,t)$中的动力学方程为
 \begin{align}
     \label{motion-equ}
-    m\ddot{x}=-eE(x,t)-\omega_0^2x-\gamma\dot{x},
+    m\ddot{x}=-eE(x,t)-\omega_0^2x-2\gamma\dot{x},
 \end{align}
 其中上式右边三项分别为该谐振子受到的驱动力（电场力）、回复力和阻尼力.
 
@@ -28,7 +28,7 @@
 将其代入式\eqref{motion-equ}中，得
 \begin{align}
     \label{motion-equ-2}
-    m[\ddot{x}+\gamma\dot{x}+\omega_0^2x]=-eE_0e^{i\omega t}.
+    m[\ddot{x}+2\gamma\dot{x}+\omega_0^2x]=-eE_0e^{i\omega t}.
 \end{align}
 从物理上看，谐振子应当和外加电场一样具有$\omega$的振荡频率，观察上面的微分方程，也不难猜到，上式的解应当有如下形式：
 \begin{align}
@@ -37,28 +37,28 @@
 \end{align}
 将上式代入动力学方程式\eqref{motion-equ-2}中即可解得
 \begin{align}
-    x_0=-\frac{eE_0}{m}\frac{1}{(\omega_0^2-\omega^2)-i\gamma\omega}.
+    x_0=-\frac{eE_0}{m}\frac{1}{(\omega_0^2-\omega^2)-2i\gamma\omega}.
 \end{align}
 从而
 \begin{align}
-    x(t)=x_0e^{-i\omega t}=-\frac{eE(t)}{m}\frac{1}{(\omega_0^2-\omega^2)-i\gamma\omega}.
+    x(t)=x_0e^{-i\omega t}=-\frac{eE(t)}{m}\frac{1}{(\omega_0^2-\omega^2)-2i\gamma\omega}.
 \end{align}
 
 每个原子贡献的偶极矩为
 \begin{align}
-    p(t)=-ex(t)=\frac{e^2E(t)}{m}\frac{1}{(\omega_0^2-\omega^2)-i\gamma\omega}.
+    p(t)=-ex(t)=\frac{e^2E(t)}{m}\frac{1}{(\omega_0^2-\omega^2)-2i\gamma\omega}.
 \end{align}
 设气体中单位体积中有$N$个原子，则气体的电极化矢量为
 \begin{align}
-    P(t)=Np(t)=\frac{e^2NE(t)}{m}\frac{1}{(\omega_0^2-\omega^2)-i\gamma\omega}=\epsilon_0\chi E(t).
+    P(t)=Np(t)=\frac{e^2NE(t)}{m}\frac{1}{(\omega_0^2-\omega^2)-2i\gamma\omega}=\epsilon_0\chi E(t).
 \end{align}
 故电极化率为
 \begin{align}
-    \chi=\frac{P(t)}{E(t)}=\frac{e^2N}{\epsilon_0m}\frac{1}{(\omega_0^2-\omega^2)-i\gamma\omega}.
+    \chi=\frac{P(t)}{E(t)}=\frac{e^2N}{\epsilon_0m}\frac{1}{(\omega_0^2-\omega^2)-2i\gamma\omega}.
 \end{align}
 事实上，若仔细思考，上面得到的电极化率的表达式并非是完全准确的，例如，原子中往往存在不止一个电子，电子的有效电荷、有效质量也不一定是$e$、$m$（所幸的是，表达式的形式是没有错的，只是系数上存在一定偏差，我们将在下一小节尝试用量子力学的方法严谨地推导电极化率），故为了修正电极化率的表达式，我们引入一个经验系数$f$（又称振子强度），从而将电极化率表为
 \begin{align}
-    \chi=\frac{4\pi Nfe^2}{m}\frac{1}{(\omega_0^2-\omega^2)-i\omega\gamma}
+    \chi=\frac{4\pi Nfe^2}{m}\frac{1}{(\omega_0^2-\omega^2)-2i\omega\gamma}
 \end{align}
 
 作为非磁性介质，气体的折射率为
@@ -67,7 +67,7 @@
 \end{align}
 对于较小的电极化率，上式可近似为
 \begin{align}
-    n\approx 1+\frac{\chi}{2}=1+\frac{2\pi Nfe^2}{m}\frac{1}{(\omega_0^2-\omega^2)-i\omega\gamma}=1+\frac{2\pi Nfe^2}{m}\frac{(\omega_0^2-\omega^2)+i\omega\gamma}{(\omega_0^2-\omega^2)^2+\omega^2\gamma^2}.
+    n\approx 1+\frac{\chi}{2}=1+\frac{2\pi Nfe^2}{m}\frac{1}{(\omega_0^2-\omega^2)-i\omega\gamma}=1+\frac{2\pi Nfe^2}{m}\frac{(\omega_0^2-\omega^2)+2i\omega\gamma}{(\omega_0^2-\omega^2)^2+4\omega^2\gamma^2}.
 \end{align}
 将折射率写成实部与虚部相加的形式
 \begin{align}
@@ -75,19 +75,19 @@
 \end{align}
 则有
 \begin{align}
-    n_0=1-\frac{2\pi Nfe^2}{m}\frac{\omega^2-\omega_0^2}{(\omega^2-\omega_0^2)^2+\omega^2\gamma^2},
+    n_0=1-\frac{2\pi Nfe^2}{m}\frac{\omega^2-\omega_0^2}{(\omega^2-\omega_0^2)^2+4\omega^2\gamma^2},
 \end{align}
 及
 \begin{align}
-    n_0\kappa=\frac{2\pi Nfe^2}{m}\frac{\omega\gamma}{(\omega^2-\omega_0^2)^2+\omega^2\gamma^2}.
+    n_0\kappa=\frac{2\pi Nfe^2}{m}\frac{\omega\gamma}{(\omega^2-\omega_0^2)^2+4\omega^2\gamma^2}.
 \end{align}
 当电磁场振荡频率与谐振子的本征频率相近（如本实验中入射激光的频率在铷原子共振频率附近扫描），$\omega\approx\omega_0$且$\omega-\omega_0\ll\gamma$，上面两式还可进一步近似为
 \begin{align}
-    n_0=&1-\frac{2\pi Nfe^2}{m}\frac{\frac{(\omega+\omega_0)(\omega-\omega_0)}{\omega_0(\omega+\omega_0)}}{\frac{(\omega+\omega_0)^2(\omega-\omega_0)^2+\omega^2\gamma^2}{\omega_0(\omega+\omega_0)}}\approx 1-\frac{2\pi Nfe^2}{m}\frac{(\omega-\omega_0)/\omega_0}{2(\omega-\omega_0)^2+\frac{1}{2}\gamma^2}=1-\frac{\pi Nfe^2}{m}\frac{\Delta\omega/\omega_0}{\Delta\omega^2+\gamma^2/4},
+    n_0=&1-\frac{2\pi Nfe^2}{m}\frac{\frac{(\omega+\omega_0)(\omega-\omega_0)}{\omega_0(\omega+\omega_0)}}{\frac{(\omega+\omega_0)^2(\omega-\omega_0)^2+4\omega^2\gamma^2}{\omega_0(\omega+\omega_0)}}\approx 1-\frac{2\pi Nfe^2}{m}\frac{(\omega-\omega_0)/\omega_0}{2(\omega-\omega_0)^2+2\gamma^2}=1-\frac{\pi Nfe^2}{m}\frac{\Delta\omega/\omega_0}{\Delta\omega^2+\gamma^2},
 \end{align}
 和
 \begin{align}
-    n_0\kappa=\frac{2\pi Nfe^2}{m}\frac{\frac{\omega\gamma}{\omega_0(\omega+\omega_0)}}{\frac{(\omega+\omega_0)^2(\omega-\omega_0)^2+\omega^2\gamma^2}{\omega_0(\omega+\omega_0)}}\approx\frac{2\pi Nfe^2}{m}\frac{\frac{1}{2}\gamma/\omega_0}{2(\omega-\omega_0)^2+\frac{1}{2}\gamma^2}=\frac{\pi Nfe^2}{m}\frac{\gamma/2\omega_0}{\Delta\omega^2+\gamma^4/2}.
+    n_0\kappa=\frac{2\pi Nfe^2}{m}\frac{\frac{2\omega\gamma}{\omega_0(\omega+\omega_0)}}{\frac{(\omega+\omega_0)^2(\omega-\omega_0)^2+4\omega^2\gamma^2}{\omega_0(\omega+\omega_0)}}\approx\frac{2\pi Nfe^2}{m}\frac{\gamma/\omega_0}{2(\omega-\omega_0)^2+2\gamma^2}=\frac{\pi Nfe^2}{m}\frac{\gamma/\omega_0}{\Delta\omega^2+\gamma^4}.
 \end{align}
 
 理论上说，电磁波的磁场也应对振子产生作用（洛伦兹力），而在上面的推导中，我们却忽略了这一项，这是因为电子在电磁波中受到洛伦兹力的量级远小于电场力的量级. 我们可以通过简单的估算说明这一点. 假设电磁波中的电场强度最大值为$1$V/m，则电子受到电场力大小为
@@ -105,11 +105,30 @@
 \end{align}
 我们用玻尔模型估算原子中电子的运动速度. 玻尔模型中，氢原子的电子和原子核之间的库仑力提供向心力使电子绕原子核旋转：
 \begin{align}
+    \label{Bohr-1}
     m\frac{v^2}{r}=\frac{1}{4\pi\epsilon_0}\frac{e^2}{r^2}.
 \end{align}
-其中$v$为电子的线速率，$r$为电子轨道半径，$\epsilon_0$为真空中介电常数.
-
-或者也可以估算振子的位移速度作为电子的运动速度
+其中$v$为电子的线速率，$r$为电子轨道半径，$\epsilon_0$为真空中介电常数. 根据玻尔的假设，电子轨道的周长是其波长的整数倍
+\begin{align}
+    2\pi r=n\lambda=n\frac{h}{p}=n\frac{h}{mv},
+\end{align}
+从而其角动量为$\hbar$的整数倍
+\begin{align}
+    L=\abs{\bm{r}\times\bm{p}}=\abs{\bm{r}\times m\bm{v}}=n\hbar,
+\end{align}
+或
+\begin{align}
+    r=\frac{\hbar}{mv}.
+\end{align}
+将上式代入式\eqref{Bohr-1}中解得电子运动速率
+\begin{align}
+    v=\frac{1}{4\pi\epsilon_0}\frac{e^2}{\hbar}=2.2\times 10^6\text{m/s}.
+\end{align}
+故电子受到的洛伦兹力最大值为
+\begin{align}
+    F_{\text{Lorentz}}=evB=1.2\times 10^{-21}\text{N},
+\end{align}
+比电场力小了两个数量级，故在本小（以及下一小节）的模型中我们可以忽略磁场的影响.
 
 \subsection{量子力学方法}
 本小节引入刘维尔-冯·诺依曼方程，并通过求解二能级系统在交变电场中的电极化强度响应，得气体折射率实部与虚部关系.
@@ -119,7 +138,7 @@
 
 首先解释什么是纯态和统计混合态：
 \begin{itemize}
-    \item 所谓纯态，就是可以用单个波函数或狄拉克符号表示的状态. 例如，对于一个电子，以自旋沿$z$轴方向向上的状态$\lvert\uparrow\rangle$和自旋沿$z$轴方向向下的状态$\lvert\downarrow\rangle$为基，其状态总可表为$\lvert\phi\rangle=\alpha\lvert\uparrow\rangle+\beta\lvert\downarrow\rangle$，其中$\alpha^2+\beta^2=1$，这就是纯态.
+    \item 所谓纯态，就是可以用单个波函数或狄拉克符号表示的状态. 例如，对于一个电子，以自旋沿$z$轴方向向上的状态$\lvert\uparrow\rangle$和自旋沿$z$轴方向向下的状态$\lvert\downarrow\rangle$为基，其状态总可表为$\lvert\phi\rangle=\alpha\lvert\uparrow\rangle+\beta\lvert\downarrow\rangle$这样的形式，其中$\alpha^2+\beta^2=1$，这就是纯态.
     \item 而统计叠加态，指的是描述的对象以经典概率处于不同的状态，从而无法用单个波函数或狄拉克符号表示的情况. 例如，一个盒子中装有$10000$个电子，其中$5000$个电子处于$\lvert\uparrow\rangle$状态，另外$5000$个电子处于$\lvert\downarrow\rangle$状态，现在我们从这个盒子中随机抽出一个电子，这个电子的状态已经是确定的，要么是$\lvert\uparrow\rangle$，要么是$\lvert\downarrow\rangle$，只不过我们不知道它到底处于$\lvert\uparrow\rangle$和$\lvert\downarrow\rangle$这两个状态中的哪一个，那此时我们如何描述这个电子的状态呢？我们只能说，这个电子有$50\%$的概率处于$\lvert\uparrow\rangle$状态，有$50\%$的概率处于$\lvert\downarrow\rangle$状态，却无法用单个波函数或狄拉克符号表示这个电子的状态，这就是统计混合态. 造成统计混合态的这种不确定性的并不（完全）是量子概率，而是经典概率.
 \end{itemize}
 
@@ -129,12 +148,12 @@
 \begin{align}
     \langle\hat{O}\rangle=\langle\phi\rvert\hat{O}\lvert\phi\rangle.
 \end{align}
-假设一组基为$\{\lvert 1\rangle,\lvert 2\rangle,\cdots,\}$，利用基的完备性，向上式插入一单位算符$\hat{1}=\sum_n\lvert\psi_1\rangle\langle\rvert$，有
+假设一组基为$\{\lvert 1\rangle,\lvert 2\rangle,\cdots,\}$，利用基的完备性，向上式插入一单位算符$\hat{1}=\sum_n\lvert n\rangle\langle n\rvert$，有
 \begin{align}
     \label{mixture-state-expectation}
     \notag\langle\hat{O}\rangle=&\langle\phi\rvert\hat{O}\hat{1}\lvert\phi\rangle\\
-    \notag=&\langle\phi\rvert\hat{O}\left[\sum_m\lvert m\rangle\langle m\rvert\right]\lvert\phi\rangle\\
-    \notag=&\sum_m\langle m\vert\phi\rangle\langle\phi\rvert\hat{O}\lvert m\rangle\\
+    \notag=&\langle\phi\rvert\hat{O}\left[\sum_n\lvert n\rangle\langle n\rvert\right]\lvert\phi\rangle\\
+    \notag=&\sum_n\langle n\vert\phi\rangle\langle\phi\rvert\hat{O}\lvert n\rangle\\
     =&\tr[\lvert\phi\rangle\langle\phi\rvert\hat{O}].
 \end{align}
 当我们测量一个处于\{有$P_1$的概率处于$\lvert\phi_1\rangle$状态，有$P_2$的概率处于$\lvert\phi_2\rangle$状态，……\}的统计叠加态的粒子的物理量$\hat{O}$，测量结果的期望值为
@@ -195,10 +214,10 @@
         \hat{U}_0(t-t_0)\hat{U}(-(t-t_0))=\hat{1}.
     \end{align}
     我们将在下面用到时间演化算符的这些性质.
-    \item 对于密度矩阵，我们将式\eqref{pure-state-evolution}，可将其关于时间的演化表为
+    \item 对于密度矩阵，我们利用式\eqref{pure-state-evolution}，可将其关于时间的演化表为
     \begin{align}
-        \notag\hat{\rho}(t)=&\sum_nP_n\hat{U}(t-t_0)\lvert\phi_n(t_0)\rangle\left(\hat{U}\lvert\phi_n(t_0)\rangle\right)^{\dagger}\\
-        \notag=&\sum_nP_n\hat{U}(t-t_0)\lvert\phi_n(t_0)
+        \notag\hat{\rho}(t)=&\sum_nP_n\hat{U}(t-t_0)\lvert\phi_n(t_0)\rangle\left(\hat{U}(t-t_0)\lvert\phi_n(t_0)\rangle\right)^{\dagger}\\
+        \notag=&\sum_nP_n\hat{U}(t-t_0)\lvert\phi_n(t_0)\rangle\langle\phi_n(t_0)\rvert\hat{U}^{\dagger}(t-t_0),
     \end{align}
     \begin{align}
         \label{mixture-state-evolution}
@@ -266,7 +285,7 @@
         我们将密度矩阵展开为$\lambda$的级数：
         \begin{align}
             \label{density-matrix-expansion}
-            \hat{\rho}'(t)=\hat{\rho}^{(0)}(t)+\hat{\rho}^{(1)}(t)+\hat{\rho}^{(2)}(t)+\cdots.
+            \hat{\rho}'(t)=\hat{\rho}^{(0)}(t)+\lambda\hat{\rho}^{(1)}(t)+\lambda^2\hat{\rho}^{(2)}(t)+\cdots.
         \end{align}
         代入式\eqref{mixture-state-evolution}有
         \begin{align}
@@ -303,7 +322,7 @@
     \frac{d}{dt}\hat{\rho}^{(0)}=&-\frac{i}{\hbar}[\hat{H}_0(\tau),\hat{\rho}^{(0)}],\\
     \frac{d}{dt}\hat{\rho}^{(1)}=&-\frac{i}{\hbar}[\hat{H}_0(\tau),\hat{\rho}^{(1)}]-\frac{i}{\hbar}[\hat{H}_I,\hat{\rho}^{(0)}],\\
     \notag\cdots&\\
-    \frac{d}{dt}\hat{\rho}^{(n)}=&-\frac{i}{\hbar}[\hat{H}_0(\tau),\hat{\rho}^{(n)}]-\frac{i}{\hbar}[\hat{H}_I,\hat{\rho}^{(n-1)}(t)],
+    \frac{d}{dt}\hat{\rho}^{(n)}=&-\frac{i}{\hbar}[\hat{H}_0(\tau),\hat{\rho}^{(n)}]-\frac{i}{\hbar}[\hat{H}_I,\hat{\rho}^{(n-1)}(t)],\\
     \notag\cdots&
 \end{align}
 
@@ -323,7 +342,7 @@
 \end{align}
 密度矩阵关于时间的演化遵循
 \begin{align}
-    \frac{d}{dt}\hat{\rho}'(t)=&\left[\frac{d}{dt}\hat{U}_0(-t)\right]\hat{\rho}(t)\hat{U}_0(t)+\hat{U}_0(-t)\left[\frac{d}{dt}\hat{\rho}(t)\right]\hat{U}_0(t)+\hat{U}_0(-t)\hat{\rho}(t)\left[\frac{d}{dt}\hat{U}_0(-t)\right].
+    \frac{d}{dt}\hat{\rho}'(t)=&\left[\frac{d}{dt}\hat{U}_0(-t)\right]\hat{\rho}(t)\hat{U}_0(t)+\hat{U}_0(-t)\left[\frac{d}{dt}\hat{\rho}(t)\right]\hat{U}_0(t)+\hat{U}_0(-t)\hat{\rho}(t)\left[\frac{d}{dt}\hat{U}_0(-t)\right],
 \end{align}
 其中
 \begin{align}
@@ -512,66 +531,152 @@ $t=0$时刻开始入射一电磁波，其电场分量表为
 \end{align}
 折射率虚部（符号或有误，存疑）
 \begin{align}
-    n_0\kappa=-\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}\frac{N\abs{p_{12}}^2}{2\hbar}\frac{i\Gamma_{21}}{\Delta\omega^2+\Gamma_{21}^2}
+    n_0\kappa=-\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}\frac{N\abs{p_{12}}^2}{2\hbar}\frac{\Gamma_{21}}{\Delta\omega^2+\Gamma_{21}^2}
 \end{align}
 其中$\Delta\omega=\omega-\omega_{21}$.
 
 我们比较一下用经典力学方法和量子力学方法得到的结果，可以发现：
 \begin{itemize}
     \item 经典图像和量子图像有很奇妙的对应关系：能级间距对应的频率对应着振子的本振频率，能级间的自发弛豫系数$\Gamma$是对应着振子的阻尼系数；
-    \item 量子力学方法相对经典力学方法更接近现象的本质：经典力学方法得到的折射率表达式中存在经验系数$f$，必须通过实验确定，而量子力学方法得到的折射率表达式，只要我们知道能级间距$\hbar\omega_{12}$，气体温度$T$，气体密度$N$，$p_{12}$（理论上可以用数值方法模拟出$\lvert 1\rangle$和$\lvert 2\rangle$的波函数$\phi_1(x)$和$\phi_2(x)$，然后用$p_{12}=\langle 1\rvert\hat{p}\lvert 2\rangle=\int dx\phi_1(x)[-ex]\phi_2^*(x)$求得），就可以计算出折射率.
+    \item 量子力学方法相对经典力学方法更接近现象的本质：经典力学方法得到的折射率表达式中存在经验系数$f$，必须通过实验确定，而量子力学方法得到的折射率表达式，其中的各个参数均有明确的物理含义：能级间距$\hbar\omega_{12}$，气体温度$T$，气体密度$N$，$p_{12}$（理论上可以用数值方法模拟出$\lvert 1\rangle$和$\lvert 2\rangle$的波函数$\phi_1(x)$和$\phi_2(x)$，然后用$p_{12}=\langle 1\rvert\hat{p}\lvert 2\rangle=\int dx\phi_1(x)[-ex]\phi_2^*(x)$求得），弛豫系数$\Gamma_{12}$（可能只能通过实验获得）.
 \end{itemize}
 
-\section{Kramer-Kronig关系}
-上节推导得到的折射率实部与虚部之间的关系实际上是一个更为一般性的规律——Kramer-Kronig关系——的一个例子. 本节介绍Kramer-Kronig关系，并验证折射率实部与虚部之间的关系确实满足Kramer-Kronig关系.
+\section{Kramers-Kronig关系}
+上节推导得到的折射率实部与虚部之间的关系实际上是一个更为一般性的规律——Kramers-Kronig关系——的一个例子. 本节介绍Kramers-Kronig关系，并验证折射率实部与虚部之间的关系确实满足Kramers-Kronig关系.
 
 对于一个具有线性响应$h(t)$的系统，输入信号$x(t)$，则输出信号为响应函数与输入信号的卷积
 \begin{align}
     y(t)=h(t)=\int_{-\infty}^{+\infty}h(\tau)x(t-\tau)\,d\tau.
 \end{align}
+其中响应函数$h(\tau)$的物理意义是，在任意时刻$t$的输入信号$x(t)$总会对$t+\tau$时刻的输出信号产生$h(\tau)x(t+\tau)$的贡献.
 根据卷积定理，输出信号的频谱为输入信号频谱和响应函数频谱的乘积
 \begin{align}
-    Y(f)=\mathscr{F}[y(t)]=\mathscr{F}[h(t)]\mathscr{F}[x(t)]=H(f)X(f).
+    Y(\omega)=\mathscr{F}[y(t)]=\mathscr{F}[h(t)]\mathscr{F}[x(t)]=H(\omega)X(\omega).
 \end{align}
-因果律要求，任意时刻的输入不能影响到之前的输出，因此$h(t)=0,\forall t<0$，从而
+
+因果律要求，任意时刻的输入不能影响到之前的输出，因此响应函数在信号输入之前（$t<0$处）均为零
 \begin{align}
-    H(f)=\int_{-\infty}^{+\infty}h(t)e^{-i2\pi f\tau}\,d\tau=\int_0^{\infty}h(t)e^{i2\pi f\tau}\,d\tau.
+    h(t)=0,\qquad\forall t<0,
 \end{align}
-在现实世界中，一个系统的响应必然是有限大的，故函数$H(f)$在$f$的上半平面解析. 当输入频率过高，则系统来不及响应，故$\lim_{f\rightarrow\pm\infty}h(f)=0$. 输入对输出的影响随着时间衰减，当输出与输入时间间隔足够长，则输入对输出近乎无影响，故$\lim_{t\rightarrow+\infty}=0$，因此$H(f)$在实轴上是解析的. 又因为利用分部积分法
+从而必可表为如下形式
 \begin{align}
-    \notag H(f)=&\int_0^{+\infty}h(\tau)e^{i2\pi f\tau}\,d\tau\\
-    \notag=&\frac{ih(0)}{2\pi f}+\frac{i}{2\pi f}\int_0^{+\infty}e^{i2\pi f\tau}\,d[h(t)]\\
-    \notag=&\frac{ih(0)}{2\pi f}+\frac{i}{2\pi f}\int_0^{+\infty}h^{(1)}(t)e^{i2\pi f\tau}\,dt\\
-    \notag=&\frac{ih(0)}{2\pi f}-\frac{h^{(1)}(0)}{(2\pi f)^2}-\frac{1}{(2\pi f)^2}\int_0^{+\infty}e^{i2\pi f\tau}\,d[h^{(1)}(t)]\\
-    \notag=&\cdots\\
-    \notag=&\frac{ih(0)}{2\pi f}-\frac{h^{(1)}(0)}{(2\pi f)^2}-\frac{ih(0)}{(2\pi f)^3}+\cdots
+    h(t)=\sgn(t)h_o(t)+h_o(t),
 \end{align}
-故$H(f)$随着$\abs{f}\rightarrow 0$的速度不慢于$\frac{1}{\abs{f}}$. 对于如图\ref{contour}所示围道上的积分
+其中
 \begin{align}
-    I=\oint\frac{H(f)}{f'-f}\,df'
+    f_o(t)=\left\{\begin{array}{ll}
+        \frac{1}{2}f(t),&t>0,\\
+        -\frac{1}{2}f(-t),&t<0,
+    \end{array}\right.
 \end{align}
+为一奇函数，而由于符号函数$\sgn(t)$亦为一奇函数，故$\sgn(t)h_o(t)$为一偶函数. 经过傅里叶变换，得频域中响应函数
+\begin{align}
+    H(\omega)=\mathscr{F}[f(t)]=\frac{1}{\sqrt{2\pi}}\mathscr{F}\left[\sgn(t)\right]*H_o(f)+H_o(f)=\frac{1}{\pi}\frac{1}{i\omega}*H_o(\omega)+H_o(\omega),
+\end{align}
+其中
+\begin{align}
+    H_o(\omega)=\mathscr{F}[h_o(t)].
+\end{align}
+由于$h_o(t)$为一奇函数，故$H_o(\omega)$为一纯虚数函数，而$\frac{1}{i\omega}*H_o(\omega)$为一实函数. 因此频域中响应函数的实部为
+\begin{align}
+    \re[H(\omega)]=\frac{1}{\pi}\frac{1}{i\omega}*H_o(\omega),
+\end{align}
+虚部为
+\begin{align}
+    \im[H(\omega)]=-iH_o(\omega).
+\end{align}
+两者之间的关系为
+\begin{align}
+    \boxed{\re[H(\omega)]=\frac{1}{\pi}\frac{1}{\omega}*\im[H(\omega)].}
+\end{align}
+此即\textbf{Kramers-Kronig关系}.
+
+在前一节的物理模型中，弱场下的气体即为一线性系统，其输入信号为电场强度$\bm{E})(t)$，输出信号可认为是（或者正比于）其电极化强度$P(t)$，其在频域上的响应函数自然为电极化率$\chi(\omega)=\frac{E(\omega)}{P(\omega)}$，其实部为
+\begin{align}
+    \re[\chi(\omega)]=-C\frac{\omega-\omega_0}{(\omega-\omega_0)^2+\gamma},
+\end{align}
+虚部为
+\begin{align}
+    \im[\chi(\omega)]=C\frac{\gamma}{(\omega-\omega_0)^2+\gamma^2},
+\end{align}
+其中$C$为一常数.
+可以验证
+\begin{align}
+    \frac{1}{\pi}\frac{1}{\omega}*\im[\chi(\omega)]=&\frac{1}{\pi}\int_{-\infty}^{+\infty}d\xi\,\frac{1}{\omega-\xi}\cdot(-C)\frac{\gamma}{(\xi-\omega_0)^2+\gamma^2}\\
+    \notag=&\left.-\frac{C\gamma}{\pi}\frac{\gamma\{\ln[(\xi-\omega_0)^2+\gamma^2]-2\ln(\xi-\omega)\}+2\omega\arctan\left(\frac{\xi-\omega_0}{\gamma}\right)+2\omega_0\arctan\left(\frac{\omega_0-\xi}{\gamma}\right)}{2\gamma[(\omega-\omega_0)^2+\gamma^2]}\right\vert_{\xi=-\infty}^{+\infty}\\
+    =&-C\frac{(\omega-\omega_0)}{(\omega-\omega_0)^2+\gamma^2}=\re[\chi(\omega)].
+\end{align}
+满足Kramer-Kronig关系.
+（上式中积分较为复杂，可用Mathematica代劳）
+
+注意到无论是经典力学方法还是量子力学方法，为了得到折射率实部和虚部之间的这种关系时，我们都在弱场以及外场频率接近振子本征频率/能级跃迁频率这两个假设的前提下做了近似. 这是因为KK关系适用的对象为线性系统，当外界输入过大，或者外界输入频率与系统本征频率不匹配，则系统的响应就偏离了线性，例如，对于现实世界中的振子，其势能函数中总有非线性项，当其受到过大的外力，位置偏离平衡位置过远，则这些非线性项的影响就会凸显，此时Kramers-Kronig关系就不再成立.
+
+\section{利用马赫-曾德尔干涉仪测量折射率与吸收率关系}
+在本实验中，我们使用了马赫-曾德尔（Mach-Zehnder，M-Z）干涉仪来测量激光通过铷蒸汽的强度和相位变化，从而验证在第一节中得到的气体折射率实部与虚部之间的关系，本节介绍这一测量方法的原理.
+
+如图\ref{M-Z}为M-Z干涉仪的光路示意图，激光从左边进入干涉仪后，被50-50分束镜1分为A、B两束，分别被反射镜A、B反射，其中B路光束相对A路光束在此过程中还经过了铷蒸汽腔，而后两束激光在50-50分束镜2处再次重合而进入光电二极管，通过光电二极管测量得到干涉光的强度. 铷蒸汽腔对于光束B具有两方面的作用：
+\begin{itemize}
+    \item 铷蒸汽折射率实部大于空气折射率，因此激光在铷蒸汽中传播相同距离所对应的光程差大于在空气传播所对应的光程差，从而使B路光束获得一附加的相位；
+    \item 铷蒸汽具有非零的折射率虚部，其物理意义是对于电磁波的吸收，因此B路光束在经过铷蒸汽腔后其强度将有一定程度的减弱.
+\end{itemize}
+这两方面的作用均与铷蒸汽的折射率有关，而铷蒸汽的折射率与入射激光的频率有关，因此当我们扫描激光频率时，将得到随着激光频率变化的干涉光强.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=.5\textwidth]{Contour.png}
-    \caption{（图源：Wikipedia）}
-    \label{contour}
+    \includegraphics[width=.5\textwidth]{M-Z-Interferometer.pdf}
+    \caption{M-Z干涉仪光路示意图}
+    \label{M-Z}
 \end{figure}
-由于围道内无奇点
 
-注意到无论是经典力学方法还是量子力学方法，为了得到折射率实部和虚部之间的这种关系时，我们都在弱场以及外场频率接近振子本征频率/能级跃迁频率这两个假设的前提下做了近似. 这是因为KK关系适用的对象时线性系统
+为了得到干涉光的强度随着激光频率的定量变化关系，我们从无铷蒸汽腔的情况开始讨论. 设激光的频率为$\omega$，入射时电场分量的振幅为$\sqrt{2}E_0$（忽略空气、分光镜和反射镜对激光的衰减和吸收），A、B两路光束走过的距离（注意，不是光程）分别为$L_1$和$L_2$. 假设不存在铷蒸汽腔，则A、B两路光束的电场振幅（注意，不是光强，无论是分开还是重合，直接分开/叠加的都是振幅！）均为原来的一半，再次叠加时得到的电场分量为
+\begin{align}
+    E=\frac{E_0}{2}e^{i\frac{\omega}{c}L_1}+\frac{E_0}{2}e^{i\frac{\omega}{c}L_2}.
+\end{align}
+干涉光强与入射光强的比值为
+\begin{align}
+    \label{I/I_0-without-cell}
+    \frac{I}{I_0}=\frac{\abs{E}^2}{E_0^2}=\frac{1}{2}\left[1+\cos\left(\frac{\omega}{c}\Delta L\right)\right],
+\end{align}
+其中$\Delta L=L_2-L_1$，如图\ref{OutputWithoutRbCell}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.5\textwidth]{OutputWithoutCell.png}
+    \caption{Photodiode output vs. $k\Delta L$, where $k=\omega/c=2\pi/\lambda$, for a perfect Mach-Zehnder interferometer with no rubidium cell, at fixed laser frequency.}
+        \label{OutputWithoutRbCell}
+\end{figure}
 
-\section{利用马赫－曾德尔干涉仪测量折射率与吸收率关系}
-马赫－曾德尔（Mach-Zehnder，M-Z）干涉仪，TODO……
+当存在长度为$\Delta z$的铷蒸汽腔，折射率为$n=n_0(1+i\kappa)$的铷蒸汽会给B路光束在原有相位上带来额外的相位差（这里指广义上的相位差，包含了衰减，为一复数）：
+\begin{align}
+    e^{\frac{\omega}{c}(n-1)\Delta z}=e^{i\frac{\omega}{c}}e^{-\frac{\omega}{c}n_0\kappa\Delta z}=e^{i\delta}e^{-\tau},
+\end{align}
+其中铷蒸汽的吸收系数（传播单位距离光强衰减的百分比）
+\begin{align}
+    \tau=\frac{\omega}{c}n_0\kappa\Delta z=\frac{\omega}{c}\frac{\pi Nfe^2}{m}\frac{\gamma/\omega_0}{\Delta\omega^2+\gamma^2}\approx\frac{\pi Nfe^2}{cm\gamma}\frac{\gamma^2}{\Delta\omega^2+\gamma^2}=\frac{\tau_0\gamma^2}{\Delta\omega^2+\gamma^2},
+\end{align}
+相移
+\begin{align}
+    \delta=\frac{\omega}{c}(n_0-1)\Delta z=-\frac{\omega}{c}\frac{\pi Nfe^2}{m}\frac{\Delta\omega/\omega_0}{\Delta\omega^2+\gamma^2}\approx-\frac{\pi Nfe^2}{cm\gamma}\frac{\Delta\omega\gamma}{\Delta\omega^2+\gamma^2}=-\frac{\tau_0\Delta\omega\gamma}{\Delta\omega^2+\gamma^2},
+\end{align}
+以上约等号成立的条件为$\omega\approx\omega_0$，其中
+\begin{align}
+    \tau_0=\frac{\pi Nfe^2}{cm\gamma}.
+\end{align}
+相移和吸收系数两者之间具有关系：
+\begin{align}
+    \delta=-\tau\frac{\Delta\omega}{\tau}.
+\end{align}
+此时A、B两路光束再次叠加时得到的电场分量为
+\begin{align}
+    E=\frac{E_0}{2}e^{i\frac{\omega}{c}L_1}+\frac{E_0}{2}e^{-\tau}e^{i\frac{\omega}{c}L_2}e^{i\delta}.
+\end{align}
+干涉光强与入射光强的比值为
+\begin{align}
+    \frac{I}{I_0}=\frac{\abs{E}^2}{E_0^2}=\frac{1}{4}\left[1+e^{-2\tau}+e^{-\tau}\cos\left(\frac{\omega}{c}\Delta L+\delta\right)\right].
+\end{align}
+若$\tau=0$，$\delta=0$，上式即为无铷蒸汽腔的情况推出的式\eqref{I/I_0-without-cell}.
 
 \section{书本问题求解}
 \begin{prob}
-    Consider the photodiode output from the interferometer without the rubidium cell. Figure \ref{InterferometricOutputWithoutRbCell} shows the output at fixed laser frequency asa a function of $\Delta L$. The maxima in this are referred to as "fringes", from their spatial structure (which you will see in the lab when you set up the interferometer). How small must $\Delta L$ be in order for the photodiode output to go through less than one fringe as the laser is scanned over the rubidium resonance line (call it $5$ GHz)? To get the best results, you should try to set up your interferometer with $\Delta L$ less than this.
-    \begin{figure}[h]
-        \centering
-        \includegraphics[width=.5\textwidth]{InterferometricOutputWithoutRbCell.png}
-        \caption{Photodiode output vs. $k\Delta L$, where $k=\omega/c=2\pi/\lambda$, for a perfect Mach-Zehnder interferometer with no rubidium cell, at fixed laser frequency.}
-        \label{InterferometricOutputWithoutRbCell}
-    \end{figure}
+    Consider the photodiode output from the interferometer without the rubidium cell. Figure \ref{OutputWithoutRbCell} shows the output at fixed laser frequency as a function of $\Delta L$. The maxima in this are referred to as "fringes", from their spatial structure (which you will see in the lab when you set up the interferometer). How small must $\Delta L$ be in order for the photodiode output to go through less than one fringe as the laser is scanned over the rubidium resonance line (call it $5$ GHz)? To get the best results, you should try to set up your interferometer with $\Delta L$ less than this.
 \end{prob}
 \begin{sol}
     为了使当激光扫过铷原子的共振频率范围（$5$GHz）时光电探测器输出变化在一个fringe（即半个周期）以内，需要满足
@@ -585,13 +690,7 @@ $t=0$时刻开始入射一电磁波，其电场分量表为
 \end{sol}
 
 \begin{prob}
-    Compute the photodiode output as a function of laser frequency around the rubidium resonance line, $I(\Delta\omega)/I_0$, for the set-up shown in Figure \ref{BasicSetup}. Assume the atoms in your cell are at rest (for ease of calculation) with some linewidth $\gamma$, so we can use the Lorentzian profile above for $\tau(\omega)$. Make three different plots of $I(\Delta\omega)/I_0$, one for each of three different values of the line center optical depth: $\tau_0=0.4$, $2$ and $20$. Make your plots over the range $-20\gamma<\Delta\omega<20\gamma$. Plot six curves on each plot, with values of $k\Delta L\mod(2\pi)$ equal to $j\pi/5$, with $j=0$ to $5$. The first and last of these correspond to the positions $A$ and $C$ in Figure \ref{InterferometricOutputWithoutRbCell}. Label your plots. You will be trying to reproduce these curves in the lab. (Check your calculations by comparing with the one calculated curve in Figure )
-    \begin{figure}[h]
-        \centering
-        \includegraphics[width=.5\textwidth]{BasicSetup.png}
-        \caption{The basic experiment set-up, consisting of a rubidium vapor cell in one arm of a Mach-Zehnder interferometer. The dotted line represent 50:50 beamsplitters. The input laser scans across the (Doppler broadened) rubidium absorption line.}
-        \label{BasicSetup}
-    \end{figure}
+    Compute the photodiode output as a function of laser frequency around the rubidium resonance line, $I(\Delta\omega)/I_0$, for the set-up shown in Figure \ref{M-Z}. Assume the atoms in your cell are at rest (for ease of calculation) with some linewidth $\gamma$, so we can use the Lorentzian profile above for $\tau(\omega)$. Make three different plots of $I(\Delta\omega)/I_0$, one for each of three different values of the line center optical depth: $\tau_0=0.4$, $2$ and $20$. Make your plots over the range $-20\gamma<\Delta\omega<20\gamma$. Plot six curves on each plot, with values of $k\Delta L\mod(2\pi)$ equal to $j\pi/5$, with $j=0$ to $5$. The first and last of these correspond to the positions $A$ and $C$ in Figure \ref{OutputWithoutRbCell}. Label your plots. You will be trying to reproduce these curves in the lab. (Check your calculations by comparing with the one calculated curve in Figure )
     \begin{figure}[h]
         \centering
         \includegraphics[width=.5\textwidth]{ComparisonOfMeasuredAndCalculatedSpectrum.png}
@@ -606,8 +705,9 @@ $t=0$时刻开始入射一电磁波，其电场分量表为
     其中
     \begin{align}
         \tau=&\frac{\tau_0\gamma^2}{\Delta\omega^2+\gamma^2},\\
-        \delta=&k(n_0-1)\Delta z=\frac{(n_0-1)\tau}{\kappa}=-\frac{2\Delta\omega\tau}{\gamma}.
+        \delta=&-\tau\frac{\Delta\omega}{\gamma}.
     \end{align}
+    按照题目要求分别代入$\tau_0=0.4,2,20$，分别绘制出$k\Delta L=0,\frac{\pi}{5},\frac{2\pi}{5},\cdots,\pi$对应的曲线，如图\ref{CalculatedSpectrum}.
     \begin{figure}[h]
         \centering
         \subfigure[$\tau_0=0.4$]{
@@ -616,7 +716,8 @@ $t=0$时刻开始入射一电磁波，其电场分量表为
         \includegraphics[width=0.45\textwidth]{Note-3-Problem-2-2.png}}
         \subfigure[$\tau_0=20$]{
         \includegraphics[width=0.45\textwidth]{Note-3-Problem-2-3.png}}
-        \caption{}
+        \caption{计算所得：干涉光强随频率的变化关系}
+        \label{CalculatedSpectrum}
     \end{figure}
 \end{sol}
 \end{document}
