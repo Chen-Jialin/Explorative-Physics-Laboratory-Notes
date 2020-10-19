@@ -128,7 +128,7 @@
 \begin{align}
     F_{\text{Lorentz}}=evB=1.2\times 10^{-21}\text{N},
 \end{align}
-比电场力小了两个数量级，故在本小（以及下一小节）的模型中我们可以忽略磁场的影响.
+比电场力小了两个数量级，故在本小节（以及下一小节）的模型中我们可以忽略磁场的影响.
 
 \subsection{量子力学方法}
 本小节引入刘维尔-冯·诺依曼方程，并通过求解二能级系统在交变电场中的电极化强度响应，得气体折射率实部与虚部关系.
@@ -338,7 +338,7 @@
 \end{align}
 密度矩阵也用相似的方式表为
 \begin{align}
-    \hat{\rho}'(t)=\hat{U}(-t)\hat{\rho}(t)\hat{U}(t).
+    \hat{\rho}'(t)=\hat{U}_0(-t)\hat{\rho}(t)\hat{U}_0(t).
 \end{align}
 密度矩阵关于时间的演化遵循
 \begin{align}
@@ -442,7 +442,7 @@
 \subsubsection{用刘维尔方程求解气体折射率实部与虚部之间的关系}
 假设原子为一个二能级系统，其要么处于能量为$E_1$的基态$\lvert 1\rangle$，要么处于能量为$E_2$的激发态$\lvert 2\rangle$. 在$t=0$时刻及之前，气体中的原子满足玻尔兹曼分布，其密度矩阵可表为
 \begin{align}
-    \notag\hat{\rho}(t)=&\frac{1}{1+\exp[-(E_2-E_1)/k_BT]}\lvert 1\rangle\langle 1\rvert+\frac{\exp[-(E_2-E_1)/k_B]}{1+\exp[-(E_2-E_1)/k_BT]}\lvert 2\rangle\langle 2\rvert,\\
+    \notag\hat{\rho}(t)=&\frac{1}{1+\exp[-(E_2-E_1)/k_BT]}\lvert 1\rangle\langle 1\rvert+\frac{\exp[-(E_2-E_1)/k_BT]}{1+\exp[-(E_2-E_1)/k_BT]}\lvert 2\rangle\langle 2\rvert,\\
     =&\frac{1}{1+\exp(-\hbar\omega_{21}/k_BT)}\lvert 1\rangle\langle 1\rvert+\frac{\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}\lvert 2\rangle\langle 2\rvert,\quad t\leq 0.
 \end{align}
 其中$k_B$为玻尔兹曼常数，$T$为气体温度，
@@ -519,13 +519,13 @@ $t=0$时刻开始入射一电磁波，其电场分量表为
 \end{align}
 由此得到气体的电极化率为
 \begin{align}
-    \chi=\frac{P(t)}{E(t)}=-\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}\frac{N\abs{p_{12}}^2}{\hbar}\frac{(\omega-\omega_{21})+i\Gamma_{21}}{(\omega-\omega_{21})^2+\Gamma_{21}^2}.
+    \chi=\frac{P}{\epsilon_0E}=-\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}\frac{N\abs{p_{12}}^2}{\hbar}\frac{(\omega-\omega_{21})+i\Gamma_{21}}{(\omega-\omega_{21})^2+\Gamma_{21}^2}.
 \end{align}
-气体的折射率为
+对于较小的电极化率，气体的折射率为
 \begin{align}
     n=\sqrt{1+\chi}\approx 1+\frac{\chi}{2}=1-\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}\frac{N\abs{p_{12}}^2}{2\hbar}\frac{(\omega-\omega_{21})+i\Gamma_{21}}{(\omega-\omega_{21})^2+\Gamma_{21}^2}=n_0(1+i\kappa).
 \end{align}
-上式中约等号成立的条件是弱场，其中折射率实部
+其中折射率实部
 \begin{align}
     n_0=1-\frac{1-\exp(-\hbar\omega_{21}/k_BT)}{1+\exp(-\hbar\omega_{21}/k_BT)}\frac{N\abs{p_{12}}^2}{2\hbar}\frac{\omega}{\Delta\omega^2+\Gamma_{21}^2},
 \end{align}
@@ -602,9 +602,9 @@ $t=0$时刻开始入射一电磁波，其电场分量表为
 其中$C$为一常数.
 可以验证
 \begin{align}
-    \frac{1}{\pi}\frac{1}{\omega}*\im[\chi(\omega)]=&\frac{1}{\pi}\int_{-\infty}^{+\infty}d\xi\,\frac{1}{\omega-\xi}\cdot(-C)\frac{\gamma}{(\xi-\omega_0)^2+\gamma^2}\\
-    \notag=&\left.-\frac{C\gamma}{\pi}\frac{\gamma\{\ln[(\xi-\omega_0)^2+\gamma^2]-2\ln(\xi-\omega)\}+2\omega\arctan\left(\frac{\xi-\omega_0}{\gamma}\right)+2\omega_0\arctan\left(\frac{\omega_0-\xi}{\gamma}\right)}{2\gamma[(\omega-\omega_0)^2+\gamma^2]}\right\vert_{\xi=-\infty}^{+\infty}\\
-    =&-C\frac{(\omega-\omega_0)}{(\omega-\omega_0)^2+\gamma^2}=\re[\chi(\omega)].
+    \notag\frac{1}{\pi}\frac{1}{\omega}*\im[\chi(\omega)]=&\frac{1}{\pi}\int_{-\infty}^{+\infty}d\xi\,\frac{1}{\omega-\xi}\cdot C\frac{\gamma}{(\xi-\omega_0)^2+\gamma^2}\\
+    \notag=&\left.\frac{C\gamma}{\pi}\frac{\gamma\{\ln[(\xi-\omega_0)^2+\gamma^2]-2\ln(\xi-\omega)\}+2\omega\arctan\left(\frac{\xi-\omega_0}{\gamma}\right)+2\omega_0\arctan\left(\frac{\omega_0-\xi}{\gamma}\right)}{2\gamma[(\omega-\omega_0)^2+\gamma^2]}\right\vert_{\xi=-\infty}^{+\infty}\\
+    =&C\frac{(\omega-\omega_0)}{(\omega-\omega_0)^2+\gamma^2}=\re[\chi(\omega)].
 \end{align}
 满足Kramer-Kronig关系.
 （上式中积分较为复杂，可用Mathematica代劳）
