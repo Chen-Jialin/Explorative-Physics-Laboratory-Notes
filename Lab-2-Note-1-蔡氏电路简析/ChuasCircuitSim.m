@@ -62,12 +62,12 @@ y_0 = [0; 0.01; -0.02];
 % for i = 0:5
 %     [t, y] = ode45(@ChuaCircuitSimFunc, t_span, y_0);
 %     figure(3 + i)
-%     plot(y(:,2), y(:,3), '-')
+%     plot(y(100:end,2), y(100:end,3), '-')
 %     R = R + 1;
 % end
 
 R = 1540;
-y = [0; 0.01; -0.05];
+y = [0; 0.01; -0.02];
 for i = 0:5
     [t, y] = ode45(@ChuaCircuitSimFunc, t_span, y_0);
     figure(3 + i)
