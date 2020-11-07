@@ -35,7 +35,7 @@ plot(V, 1e3 * I, 'k--')
 grid on
 xlabel('V / V', 'fontsize', 16)
 ylabel('I / mA', 'fontsize', 16)
-legend('蔡氏二极管1（含R1,R2,R3）', '蔡氏二极管2（含R4,R5,R6）', 'fontsize', 12)
+legend('负阻抗转换器1（含R1,R2,R3）', '负阻抗转换器2（含R4,R5,R6）', 'fontsize', 12)
 
 % Chua's Diode I-V
 I = (V <= Vmax1) .* (V >= Vmin1) .* (- R2 / (R3 * R1) * V)...
