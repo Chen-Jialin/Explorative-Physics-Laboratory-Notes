@@ -546,9 +546,9 @@ $t=0$时刻开始入射一电磁波，其电场分量表为
 
 对于一个具有线性响应$h(t)$的系统，输入信号$x(t)$，则输出信号为响应函数与输入信号的卷积
 \begin{align}
-    y(t)=h(t)=\int_{-\infty}^{+\infty}h(\tau)x(t-\tau)\,d\tau.
+    y(t)=\int_{-\infty}^{+\infty}h(\tau)x(t-\tau)\,d\tau.
 \end{align}
-其中响应函数$h(\tau)$的物理意义是，在任意时刻$t$的输入信号$x(t)$总会对$t+\tau$时刻的输出信号产生$h(\tau)x(t+\tau)$的贡献.
+其中响应函数$h(\tau)$的物理意义是，在任意时刻$t$的输入信号$x(t)$总会对$t+\tau$时刻的输出信号产生$h(\tau)x(t)$的贡献.
 根据卷积定理，输出信号的频谱为输入信号频谱和响应函数频谱的乘积
 \begin{align}
     Y(\omega)=\mathscr{F}[y(t)]=\mathscr{F}[h(t)]\mathscr{F}[x(t)]=H(\omega)X(\omega).
